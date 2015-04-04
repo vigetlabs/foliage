@@ -22,6 +22,10 @@ module.exports = {
     modulesDirectories: [ 'web_modules', 'node_modules', 'src' ]
   },
 
+  externals: {
+    'sprout-data': 'sprout-data'
+  },
+
   module: {
     loaders: [
       {
