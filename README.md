@@ -92,8 +92,7 @@ assert(fiz.trunk() === plant)
 
 ## Prior art
 
-There is nothing novel about Foliage, and probably slightly flawed in
-it's mimicking of:
+There is nothing novel about Foliage, it shamelessly mimics:
 
 - http://omniscientjs.github.io/
 - https://github.com/omniscientjs/immstruct
