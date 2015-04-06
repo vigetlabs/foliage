@@ -32,6 +32,8 @@ entire structure isn't necessary for an individual component.
 ## Opinions
 
 1. Keep a naming convention similar to ES6 maps
+2. Keep it small. There are plenty of other Cursors-like
+   libraries. See [Prior Art](#prior-art)
 
 ## Working with Foliage
 
