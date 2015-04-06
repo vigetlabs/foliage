@@ -84,8 +84,20 @@ All branches have a reference to their parent. No matter how branched,
 the `trunk` can be found:
 
 ```javascript
-let plant = new Foliage({ fiz: 'buzz' })
+let plant = new Foliage({ fizz: 'buzz' })
 let fiz   = plant.get('fiz')
 
 assert(fiz.trunk() === plant)
 ```
+
+## Prior art
+
+There is nothing novel about Foliage, and probably slightly flawed in
+it's mimicking of:
+
+- http://omniscientjs.github.io/
+- https://github.com/omniscientjs/immstruct
+- https://github.com/omcljs/om
+- http://yquem.inria.fr/~huet/PUBLIC/zip.pdf
+- https://github.com/dustingetz/react-cursor
+- https://github.com/Yomguithereal/baobab
