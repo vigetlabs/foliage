@@ -3,7 +3,7 @@
 ## 0.2.0
 
 - Add toJSON methods
-- Removed internal Cursor class. Foliage all the way down...
+- Removed internal Cursor class. Foliage all the way down... This means that `React.PropTypes.instanceOf(Foliage` now works consistently.
 
 ## 0.1.0
 
