@@ -32,7 +32,7 @@ module.exports = function(config) {
     },
 
     webpack: {
-      devtool : '#eval-source-map',
+      devtool : 'inline-source-map',
       plugins : webpack_config.plugins,
       resolve : webpack_config.resolve,
 

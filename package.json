@@ -1,6 +1,6 @@
 {
   "name": "foliage",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A cursor like tree data structure on top of sprout.",
   "main": "dist/Foliage.js",
   "scripts": {
