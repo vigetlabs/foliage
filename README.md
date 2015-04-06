@@ -40,7 +40,7 @@ entire structure isn't necessary for an individual component.
 Foliage accepts a seed:
 
 ```javascript
-let plant = new Folage({ berries: true })
+let plant = new Foliage({ berries: true })
 ```
 
 ## Querying records
@@ -48,7 +48,7 @@ let plant = new Folage({ berries: true })
 `get` pulls data out of a "plant."
 
 ```javascript
-let plant = new Folage({ berries: true })
+let plant = new Foliage({ berries: true })
 
 plant.get('berries').valueOf() // => true
 ```
@@ -63,7 +63,7 @@ Calling `get` returns a `branch`. Technically, this is called a
 `cursor`, but let's keep with the dendrology theme.
 
 ```javascript
-let oak = new Folage({
+let oak = new Foliage({
   squirrels: {
     squeakem: { weight: 2, height: 12 }
     chatters: { weight: 5, height: 8 }
