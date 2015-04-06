@@ -9,9 +9,19 @@
 
 # Foliage
 
-Foliage is lightweight tree data structure modeled loosely after [Om's Cursor](https://github.com/omcljs/om/wiki/Cursors) and [OmniscientJS's `immstruct`](https://github.com/omniscientjs/immstruct).
+Foliage is lightweight
+[zipper](http://en.wikipedia.org/wiki/Zipper_%28data_structure%29)
+that operates on a tree of JavaScript primitives. It is modeled
+loosely on [Om's Cursor](https://github.com/omcljs/om/wiki/Cursors)
+and
+[OmniscientJS's `immstruct`](https://github.com/omniscientjs/immstruct),
+however it is not nearly as ambitious.
 
-In more practical terms, Foliage is a thin layer on top of [`sprout`](https://github.com/herrstucki/sprout).
+Foliage makes it easier to work with data in component-oriented
+frameworks such as React by allowing data to be passed around in terms
+of references to locations in a global application state object. This
+means that state can be maintained in a single location, however that
+entire structure isn't necessary for an individual component.
 
 ## What problems does it attempt to solve?
 
