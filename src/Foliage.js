@@ -2,9 +2,9 @@
  * Foliage
  */
 
+import Diode       from 'diode'
 import enumeration from './enumeration'
 import sprout      from 'sprout-data'
-import Diode       from 'diode'
 
 export default Foliage
 
@@ -44,13 +44,12 @@ Foliage.prototype = {
   },
 
   set(key, value) {
-    let mod;
-
     if (arguments.length === 1) {
-      mod = sprout.assoc(this.state(), this.query(), key)
-    } else {
-      mod = sprout.assoc(this.state(), this.query(key), value)
+      value = arguments[0]
+      key   = undefined
     }
+
+    let mod = sprout.assoc(this.state(), this.query(key), value)
 
     this.commit(mod)
   },
