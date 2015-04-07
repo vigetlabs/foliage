@@ -102,6 +102,23 @@ let fiz   = plant.get('fiz')
 assert(fiz.trunk() === plant)
 ```
 
+## Listening to changes
+
+All points in a Foliage publish events when they change:
+
+```javascript
+let plant  = new Foliage({ fizz: 'buzz' })
+let branch = plant.get('fiz')
+
+plant.listen(() => console.log('plant changed!'))
+branch.listen(() => console.log('branch changed!'))
+
+branch.set('new value')
+
+// => branch changed!
+// => plant changed!
+```
+
 ## Prior art
 
 There is nothing novel about Foliage, it shamelessly mimics:

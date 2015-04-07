@@ -36,6 +36,16 @@ describe('Foliage', function() {
       plant.get('first').valueOf().should.equal('modified')
     })
 
+    it ('assumes a single argument sets the entire state', function() {
+      let plant = new Foliage({ fiz: 'buz'})
+      let query = plant.get('fiz')
+
+      query.set('foo')
+      query.valueOf().should.equal('foo')
+
+      plant.get('fiz').valueOf().should.equal('foo')
+    })
+
     it ('sets the original state from a cursor', function() {
       let plant = new Foliage(deep)
       let query = plant.get('first')
@@ -43,6 +53,36 @@ describe('Foliage', function() {
       query.set('second', 'modified')
 
       plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
+    })
+
+    it ('triggers a change event on the cursor', function(done) {
+      let plant = new Foliage(deep)
+      let query = plant.get('first')
+
+      query.listen(done)
+      query.set('second', 'modified')
+    })
+
+    it ('triggers a change event on the parent', function(done) {
+      let plant = new Foliage(deep)
+      let query = plant.get('first')
+
+      plant.listen(done)
+      query.set('second', 'modified')
+    })
+
+    it ('does not trigger a change event on siblings', function(done) {
+      let plant = new Foliage({ first: 'first', second: 'second' })
+      let a = plant.get('first')
+      let b = plant.get('second')
+
+      b.listen(function() {
+        throw "Sibling should not have triggered event"
+      })
+
+      a.listen(done)
+
+      a.set('modified')
     })
   })
 

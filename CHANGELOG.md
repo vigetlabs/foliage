@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Committing new values now causes a change event that will bubble up the tree
+- Calling `set` with one argument will assume the query for the cursor as the key
+
 ## 0.2.0
 
 - Add toJSON methods

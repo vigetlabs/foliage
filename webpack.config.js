@@ -23,6 +23,7 @@ module.exports = {
   },
 
   externals: {
+    'diode': 'diode',
     'sprout-data': 'sprout-data'
   },
 

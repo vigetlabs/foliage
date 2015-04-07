@@ -4,18 +4,19 @@
 
 import enumeration from './enumeration'
 import sprout      from 'sprout-data'
+import Diode       from 'diode'
 
 export default Foliage
 
 function Foliage (state, keys, source) {
+  Diode.decorate(this)
+
   this._state  = state
   this._keys   = keys ? [].concat(keys) : []
   this._source = source || this
 }
 
 Foliage.prototype = {
-
-  ...enumeration,
 
   state() {
     return this.isTrunk() ? this._state : this._source.state()
@@ -29,12 +30,28 @@ Foliage.prototype = {
     return new Foliage(this.state(), this.query(key), this._source)
   },
 
+  _bubble() {
+    this.volley()
+
+    if (this.isTrunk() === false) {
+      this._source.volley()
+    }
+  },
+
   commit(state) {
     this.trunk()._state = state
+    this._bubble()
   },
 
   set(key, value) {
-    let mod = sprout.assoc(this.state(), this.query(key), value)
+    let mod;
+
+    if (arguments.length === 1) {
+      mod = sprout.assoc(this.state(), this.query(), key)
+    } else {
+      mod = sprout.assoc(this.state(), this.query(key), value)
+    }
+
     this.commit(mod)
   },
 
@@ -58,6 +75,7 @@ Foliage.prototype = {
 
   toJSON() {
     return this.valueOf()
-  }
+  },
 
+  ...enumeration
 }
