@@ -34,7 +34,7 @@ Foliage.prototype = {
     this.volley()
 
     if (this.isTrunk() === false) {
-      this._source.volley()
+      this._source._bubble()
     }
   },
 

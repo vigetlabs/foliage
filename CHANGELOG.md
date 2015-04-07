@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Fixed bug where deeply nested branches would not emit event
+
 ## 0.3.0
 
 - Committing new values now causes a change event that will bubble up the tree
