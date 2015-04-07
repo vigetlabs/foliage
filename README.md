@@ -123,9 +123,9 @@ branch.set('new value')
 
 There is nothing novel about Foliage, it shamelessly mimics:
 
-- http://omniscientjs.github.io/
-- https://github.com/omniscientjs/immstruct
-- https://github.com/omcljs/om
-- http://yquem.inria.fr/~huet/PUBLIC/zip.pdf
-- https://github.com/dustingetz/react-cursor
-- https://github.com/Yomguithereal/baobab
+- [OmnicientJS](http://omniscientjs.github.io/)
+- [OmnicientJS Immstruct](https://github.com/omniscientjs/immstruct)
+- [Om](https://github.com/omcljs/om)
+- [Functional Zippers](http://yquem.inria.fr/~huet/PUBLIC/zip.pdf)
+- [React Cursor](https://github.com/dustingetz/react-cursor)
+- [Baobab](https://github.com/Yomguithereal/baobab)
