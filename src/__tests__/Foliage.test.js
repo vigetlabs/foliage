@@ -1,4 +1,4 @@
-import Foliage, { Cursor } from '../index'
+import Foliage from '../index'
 
 describe('Foliage', function() {
   let shallow = { first: 1 }
@@ -55,35 +55,6 @@ describe('Foliage', function() {
       plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
     })
 
-    it ('triggers a change event on the cursor', function(done) {
-      let plant = new Foliage(deep)
-      let query = plant.get('first')
-
-      query.listen(done)
-      query.set('second', 'modified')
-    })
-
-    it ('triggers a change event on the parent', function(done) {
-      let plant = new Foliage(deep)
-      let query = plant.get('first')
-
-      plant.listen(done)
-      query.set('second', 'modified')
-    })
-
-    it ('does not trigger a change event on siblings', function(done) {
-      let plant = new Foliage({ first: 'first', second: 'second' })
-      let a = plant.get('first')
-      let b = plant.get('second')
-
-      b.listen(function() {
-        throw "Sibling should not have triggered event"
-      })
-
-      a.listen(done)
-
-      a.set('modified')
-    })
   })
 
   describe('Foliage::remove', function() {
@@ -105,84 +76,17 @@ describe('Foliage', function() {
     })
   })
 
-  describe('Foliage::map', function() {
-    let incr = i => i + 1
-
-    it ('map over top level elements', function() {
-      let plant = new Foliage([ 1, 2, 3])
-      plant.map(incr).should.eql([ 2, 3, 4])
-    })
-
-    it ('map over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.get('first')
-
-      query.map(incr).should.eql([ 2, 3, 4])
-    })
-  })
-
-  describe('Foliage::reduce', function() {
-    let sum = (a, b) => a + b
-
-    it ('reduce over top level elements', function() {
-      let plant = new Foliage([ 1, 2, 3])
-
-      plant.reduce(sum, 0).should.eql(6)
-    })
-
-    it ('reduce over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.get('first')
-
-      query.reduce(sum, 0).should.eql(6)
-    })
-  })
-
-  describe('Foliage::filter', function() {
-    let even = n => (n % 2 === 0)
-
-    it ('filter out extraneous values', function() {
-      let plant = new Foliage([ 1, 2, 3])
-
-      plant.filter(even).should.eql([2])
-    })
-
-    it ('filters over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.get('first')
-
-      query.filter(even).should.eql([2])
-    })
-  })
-
-  describe('Foliage::find', function() {
-    let even = n => (n % 2 === 0)
-
-    it ('returns the first answer of a filter', function() {
-      let plant = new Foliage([ 1, 2, 3, 4])
-
-      plant.find(even).should.eql(2)
-    })
-
-    it ('finds over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3, 4] })
-      let query = plant.get('first')
-
-      query.find(even).should.eql(2)
-    })
-  })
-
-  describe('Foliage::trunk', function() {
+  describe('Foliage::getTrunk', function() {
     it ('returns itself if it is the root', function() {
       let plant = new Foliage([ 1, 2, 3, 4])
-      plant.trunk().should.equal(plant)
+      plant.getTrunk().should.equal(plant)
     })
 
     it ('returns its source if it is a cursor', function() {
       let plant = new Foliage({ first: [ 1, 2, 3, 4] })
       let query = plant.get('first')
 
-      query.trunk().should.equal(plant)
+      query.getTrunk().should.equal(plant)
     })
   })
 

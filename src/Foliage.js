@@ -2,45 +2,44 @@
  * Foliage
  */
 
-import Diode       from 'diode'
 import enumeration from './enumeration'
-import sprout      from 'sprout-data'
+import assoc       from './assoc'
+import dissoc      from './dissoc'
+import get         from './get'
 
 export default Foliage
 
-function Foliage (state, keys, source) {
-  Diode.decorate(this)
-
+function Foliage (state={}) {
+  this._parent = this
+  this._path   = []
   this._state  = state
-  this._keys   = keys ? [].concat(keys) : []
-  this._source = source || this
 }
 
 Foliage.prototype = {
 
-  state() {
-    return this.isTrunk() ? this._state : this._source.state()
+  getPath(key) {
+    return key ? this._path.concat(key) : this._path
   },
 
-  query(key) {
-    return key ? this._keys.concat(key) : this._keys
+  getState() {
+    return this.getTrunk()._state
   },
 
-  get(key) {
-    return new Foliage(this.state(), this.query(key), this._source)
-  },
-
-  _bubble() {
-    this.volley()
-
-    if (this.isTrunk() === false) {
-      this._source._bubble()
-    }
+  getTrunk() {
+    return this._parent
   },
 
   commit(state) {
-    this.trunk()._state = state
-    this._bubble()
+    this.getTrunk()._state = state
+  },
+
+  get(key) {
+    let clone     = Object.create(this)
+
+    clone._parent = this
+    clone._path   = this.getPath(key)
+
+    return clone
   },
 
   set(key, value) {
@@ -49,27 +48,16 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    let mod = sprout.assoc(this.state(), this.query(key), value)
-
-    this.commit(mod)
+    this.commit(assoc(this.getState(), this.getPath(key), value))
   },
 
   remove(key) {
-    let mod = sprout.dissoc(this.state(), this.query(key))
-    this.commit(mod)
-  },
-
-  trunk() {
-    return this._source
-  },
-
-  isTrunk() {
-    return this._source === this
+    this.commit(dissoc(this.getState(), this.getPath(key)))
   },
 
   valueOf() {
-    let state = this.state()
-    return this._keys.length ? sprout.get(state, this.query()) : state
+    let state = this.getState()
+    return this._path.length ? get(state, this.getPath()) : state
   },
 
   toJSON() {
