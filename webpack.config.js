@@ -27,20 +27,14 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      {
-        test    : /\.jsx*$/,
-        exclude : /node_modules/,
-        loader  : 'babel',
-        query   : {
-          stage : 1,
-          loose : true
-        }
-      },
-      {
-        test    : /\.json$/,
-        loader  : 'json'
+    loaders: [{
+      test    : /\.jsx*$/,
+      exclude : /node_modules/,
+      loader  : 'babel',
+      query   : {
+        stage : 1,
+        loose : true
       }
-    ]
+    }]
   }
 }

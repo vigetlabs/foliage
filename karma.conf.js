@@ -37,22 +37,16 @@ module.exports = function(config) {
       resolve : webpack_config.resolve,
 
       module: {
-        loaders: [
-          {
-            test    : /\.jsx*$/,
-            exclude : /node_modules/,
-            loader  : 'babel',
-            query   : {
-              stage: 0,
-              loose: true,
-              optional: ['runtime']
-            }
-          },
-          {
-            test    : /\.json$/,
-            loader  : 'json'
+        loaders: [{
+          test    : /\.jsx*$/,
+          exclude : /node_modules/,
+          loader  : 'babel',
+          query   : {
+            stage: 1,
+            loose: true,
+            optional: ['runtime']
           }
-        ],
+        }],
         postLoaders: [
           {
             test: /\.jsx*$/,
