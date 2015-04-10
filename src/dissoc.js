@@ -1,22 +1,27 @@
 import copy from './copy'
 import has  from './has'
 
+let isEmpty = function(obj) {
+  return Object.keys(obj).length === 0
+}
+
 export default function dissoc (obj, keys) {
-  if (!has(obj, keys)) {
+  if (has(obj, keys) === false) {
     return obj
   }
 
-  let [ k, ...ks ] = keys
-  let o = copy(obj)
+  let [ head, ...tail ] = keys
+  let clone = copy(obj)
 
-  if (ks.length) {
-    o[k] = dissoc(obj[k], ks)
-    if (!Object.keys(o[k]).length) {
-      delete o[k]
+  if (tail.length) {
+    clone[head] = dissoc(obj[head], tail)
+
+    if (isEmpty(clone[head])) {
+      delete clone[head]
     }
   } else {
-    delete o[k]
+    delete clone[head]
   }
 
-  return o
+  return clone
 }
