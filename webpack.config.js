@@ -23,8 +23,7 @@ module.exports = {
   },
 
   externals: {
-    'diode': 'diode',
-    'sprout-data': 'sprout-data'
+    'diode': 'diode'
   },
 
   module: {
@@ -34,8 +33,8 @@ module.exports = {
         exclude : /node_modules/,
         loader  : 'babel',
         query   : {
-          stage: 0,
-          loose: true
+          stage : 1,
+          loose : true
         }
       },
       {
