@@ -6,7 +6,7 @@ let assoc  = require('./assoc')
 let dissoc = require('./dissoc')
 let get    = require('./get')
 
-function Foliage (state={}) {
+function Foliage (state) {
   this._path  = []
   this._root  = this
   this._state = state
