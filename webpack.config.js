@@ -22,9 +22,7 @@ module.exports = {
     modulesDirectories: [ 'web_modules', 'node_modules', 'src' ]
   },
 
-  externals: {
-    'diode': 'diode'
-  },
+  externals: {},
 
   module: {
     loaders: [{
