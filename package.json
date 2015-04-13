@@ -1,7 +1,7 @@
 {
   "name": "foliage",
-  "version": "0.3.1",
-  "description": "A cursor like tree data structure on top of sprout.",
+  "version": "0.4.0",
+  "description": "A cursor like tree data structure.",
   "main": "dist/Foliage.js",
   "scripts": {
     "coveralls": "CONTINUOUS_INTEGRATION=true npm test && coveralls < coverage/report-lcov/lcov.info",
@@ -14,9 +14,7 @@
     "url": "git://github.com/vigetlabs/foliage.git"
   },
   "license": "MIT",
-  "dependencies": {
-    "diode": "^4.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^5.x.x",
     "babel-loader": "^5.x.x",

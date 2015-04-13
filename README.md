@@ -84,45 +84,15 @@ oak.get(['squirrels', 'squeakem', 'weight']).valueOf() // => 5
 ```
 
 A couple of things are going on here. First, `set` is used to modify
-data. It maps directly to
-[`sprout`'s `assoc` method](https://github.com/herrstucki/sprout#assocobj-path-value-path2-value2-). Second,
-both `get` and `set` accept an array of keys. When given an array,
-they will traverse the tree for the leaf value instead of just
-returning the key from the most immediate level.
-
-## Phoning home
-
-All branches have a reference to their parent. No matter how branched,
-the `trunk` can be found:
-
-```javascript
-let plant = new Foliage({ fizz: 'buzz' })
-let fiz   = plant.get('fiz')
-
-assert(fiz.trunk() === plant)
-```
-
-## Listening to changes
-
-All points in a Foliage publish events when they change:
-
-```javascript
-let plant  = new Foliage({ fizz: 'buzz' })
-let branch = plant.get('fiz')
-
-plant.listen(() => console.log('plant changed!'))
-branch.listen(() => console.log('branch changed!'))
-
-branch.set('new value')
-
-// => branch changed!
-// => plant changed!
-```
+data. Second, both `get` and `set` accept an array of keys. When given
+an array, they will traverse the tree for the leaf value instead of
+just returning the key from the most immediate level.
 
 ## Prior art
 
 There is nothing novel about Foliage, it shamelessly mimics:
 
+- [Sprout](https://github.com/herrstucki/sprout)
 - [OmnicientJS](http://omniscientjs.github.io/)
 - [OmnicientJS Immstruct](https://github.com/omniscientjs/immstruct)
 - [Om](https://github.com/omcljs/om)
