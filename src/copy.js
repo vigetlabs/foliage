@@ -3,7 +3,7 @@
  * Shallow copy an object.
  */
 
-export default function copy(obj) {
+module.exports = function copy(obj) {
   // Arrays get out cheap
   if (Array.isArray(obj)) return obj.slice()
 

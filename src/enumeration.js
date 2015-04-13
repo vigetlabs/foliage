@@ -25,4 +25,4 @@ allowed.forEach(function(key) {
   }
 })
 
-export default enumeration
+module.exports = enumeration

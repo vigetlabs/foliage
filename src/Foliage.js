@@ -2,17 +2,14 @@
  * Foliage
  */
 
-import enumeration from './enumeration'
-import assoc       from './assoc'
-import dissoc      from './dissoc'
-import get         from './get'
-
-export default Foliage
+let assoc  = require('./assoc')
+let dissoc = require('./dissoc')
+let get    = require('./get')
 
 function Foliage (state={}) {
-  this._parent = this
-  this._path   = []
-  this._state  = state
+  this._path  = []
+  this._root  = this
+  this._state = state
 }
 
 Foliage.prototype = {
@@ -22,24 +19,17 @@ Foliage.prototype = {
   },
 
   getState() {
-    return this.getTrunk()._state
-  },
-
-  getTrunk() {
-    return this._parent
+    return this._state
   },
 
   commit(state) {
-    this.getTrunk()._state = state
+    this._root._state = state
   },
 
   get(key) {
-    let clone     = Object.create(this)
-
-    clone._parent = this
-    clone._path   = this.getPath(key)
-
-    return clone
+    return Object.create(this, {
+      _path : { value: this.getPath(key) }
+    })
   },
 
   set(key, value) {
@@ -55,14 +45,40 @@ Foliage.prototype = {
     this.commit(dissoc(this.getState(), this.getPath(key)))
   },
 
+  keys() {
+    return Object.keys(this.valueOf())
+  },
+
+  values() {
+    let value = this.valueOf()
+    return this.keys().map(k => value[k])
+  },
+
   valueOf() {
-    let state = this.getState()
-    return this._path.length ? get(state, this.getPath()) : state
+    return get(this.getState(), this.getPath())
   },
 
   toJSON() {
     return this.valueOf()
   },
 
-  ...enumeration
+  toArray() {
+    return this.values()
+  },
+
+  find() {
+    return this.filter(...arguments)[0]
+  }
+
 }
+
+// Add collection methods
+let methods = [ 'map', 'reduce', 'filter', 'forEach' ]
+
+methods.forEach(function(name) {
+  Foliage.prototype[name] = function() {
+    return this.toArray()[name](...arguments)
+  }
+})
+
+module.exports = Foliage

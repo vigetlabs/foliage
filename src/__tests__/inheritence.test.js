@@ -1,4 +1,4 @@
-import Foliage from '../index'
+import Foliage from '../Foliage'
 
 describe('Foliage', function() {
 

@@ -4,7 +4,7 @@
  * This will get tail-call optimization with Babel
  */
 
-export default function has (obj, [ head, ...tail ]) {
+module.exports = function has (obj, [ head, ...tail ]) {
   let hasKey = (head in obj)
 
   if (tail.length) {

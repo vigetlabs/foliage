@@ -1,11 +1,11 @@
-import copy from './copy'
-import has  from './has'
+let copy = require('./copy')
+let has  = require('./has')
 
 let isEmpty = function(obj) {
   return Object.keys(obj).length === 0
 }
 
-export default function dissoc (obj, keys) {
+module.exports = function dissoc (obj, keys) {
   if (has(obj, keys) === false) {
     return obj
   }

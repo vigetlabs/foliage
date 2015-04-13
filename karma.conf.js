@@ -22,7 +22,7 @@ module.exports = function(config) {
       'src/**/__tests__/*.js*' : [ 'webpack', 'sourcemap' ]
     },
 
-    reporters: [ 'progress', 'coverage' ],
+    reporters: isIntegration ? [ 'progress', 'coverage' ] : [ 'progress' ],
 
     coverageReporter: {
       reporters: [
@@ -47,13 +47,11 @@ module.exports = function(config) {
             optional: ['runtime']
           }
         }],
-        postLoaders: [
-          {
-            test: /\.jsx*$/,
-            exclude: /(__tests__|node_modules)\//,
-            loader: 'istanbul-instrumenter'
-          }
-        ]
+        postLoaders: isIntegration ? [{
+          test: /\.jsx*$/,
+          exclude: /(__tests__|node_modules)\//,
+          loader: 'istanbul-instrumenter'
+        }] : []
       }
     },
 

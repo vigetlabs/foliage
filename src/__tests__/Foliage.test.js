@@ -1,4 +1,4 @@
-import Foliage from '../index'
+import Foliage from '../Foliage'
 
 describe('Foliage', function() {
   let shallow = { first: 1 }
@@ -76,22 +76,9 @@ describe('Foliage', function() {
     })
   })
 
-  describe('Foliage::getTrunk', function() {
-    it ('returns itself if it is the root', function() {
-      let plant = new Foliage([ 1, 2, 3, 4])
-      plant.getTrunk().should.equal(plant)
-    })
-
-    it ('returns its source if it is a cursor', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3, 4] })
-      let query = plant.get('first')
-
-      query.getTrunk().should.equal(plant)
-    })
-  })
-
   describe('Foliage::toJSON', function() {
     let data = [1,2,3,4]
+
     it ('returns the source value of it is root', function() {
       let plant = new Foliage(data)
       plant.toJSON().should.equal(data)

@@ -1,7 +1,7 @@
-import copy from './copy'
-import get  from './get'
+let copy = require('./copy')
+let get  = require('./get')
 
-export default function assoc (obj, keys, value) {
+module.exports = function assoc (obj, keys, value) {
   if (get(obj, keys) === value) {
     return obj
   }

@@ -5,7 +5,7 @@ module.exports = {
   devtool : 'source-map',
 
   entry: {
-    Foliage : './src/index.js'
+    Foliage : './src/Foliage.js'
   },
 
   output: {
