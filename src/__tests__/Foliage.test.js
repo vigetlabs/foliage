@@ -6,11 +6,11 @@ describe('Foliage', function() {
 
   describe('Foliage::get', function() {
 
-    it ('returns a given value', function() {
+    it ('returns cursor to a given pathway', function() {
       let plant = new Foliage(shallow)
       let query = plant.get('first')
 
-      query.valueOf().should.equal(1)
+      query.getPath().should.eql(['first'])
     })
 
     it ('returns a nested given value', function() {
@@ -26,6 +26,18 @@ describe('Foliage', function() {
       second.valueOf().should.equal(2)
     })
 
+  })
+
+  describe('Foliage::fetched', function() {
+    it ('returns a given value', function() {
+      let plant = new Foliage(shallow)
+      plant.fetch('first').should.equal(1)
+    })
+
+    it ('returns a fallback if a path is not represented', function() {
+      let plant = new Foliage()
+      plant.fetch('first', 'fiz').should.equal('fiz')
+    })
   })
 
   describe('Foliage::set', function() {

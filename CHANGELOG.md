@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.0
+
+- Added `fetch`, which will return a pathway and allow a fallback if it doesn't exist
+
 ## 0.4.2
 
 - Properly handle undefined pathways in `has` and `keys()`
