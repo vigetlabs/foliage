@@ -5,7 +5,7 @@
 let assoc  = require('./assoc')
 let dissoc = require('./dissoc')
 let get    = require('./get')
-let has    = require('./has')
+let hasKey = require('./has')
 
 function Foliage (state, fallback) {
   this._path  = []
@@ -47,7 +47,7 @@ Foliage.prototype = {
   },
 
   has(key) {
-    return has(this.getState(), this.getPath(key))
+    return hasKey(this.getState(), this.getPath(key))
   },
 
   fetch(key, fallback) {
