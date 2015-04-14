@@ -55,6 +55,24 @@ describe('Foliage', function() {
       plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
     })
 
+    it ('defines pathways that have not been set yet', function() {
+      let plant = new Foliage()
+      let query = plant.get('first')
+
+      query.set('second', 'modified')
+
+      plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
+    })
+
+    it ('can set when assuming a pathway', function() {
+      let plant = new Foliage()
+      let query = plant.get('first')
+
+      query.set('second', 'modified')
+
+      plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
+    })
+
   })
 
   describe('Foliage::remove', function() {
