@@ -13,8 +13,8 @@ Foliage is lightweight tree that operates on a tree of JavaScript primitives. It
 loosely on [Om's Cursor](https://github.com/omcljs/om/wiki/Cursors)
 and
 [OmniscientJS's `immstruct`](https://github.com/omniscientjs/immstruct),
-however it is not nearly as ambitious. It differs from these solutions
-by compromising on robustness for significant payload savings.
+however it is not nearly as ambitious. It compromises on robustness
+and purity for the benefit of build size.
 
 Foliage makes it easier to work with data in component-oriented
 frameworks such as React by allowing data to be passed around in terms
