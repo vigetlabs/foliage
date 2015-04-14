@@ -9,13 +9,12 @@
 
 # Foliage
 
-Foliage is lightweight
-[zipper](http://en.wikipedia.org/wiki/Zipper_%28data_structure%29)
-that operates on a tree of JavaScript primitives. It is modeled
+Foliage is lightweight tree that operates on a tree of JavaScript primitives. It is modeled
 loosely on [Om's Cursor](https://github.com/omcljs/om/wiki/Cursors)
 and
 [OmniscientJS's `immstruct`](https://github.com/omniscientjs/immstruct),
-however it is not nearly as ambitious.
+however it is not nearly as ambitious. It differs from these solutions
+by compromising on robustness for significant payload savings.
 
 Foliage makes it easier to work with data in component-oriented
 frameworks such as React by allowing data to be passed around in terms
@@ -23,17 +22,25 @@ of references to locations in a global application state object. This
 means that state can be maintained in a single location, however that
 entire structure isn't necessary for an individual component.
 
-## What problems does it attempt to solve?
+## Goals
 
-1. Decouple React components from rest of app. Our Flux-like framework, [Microcosm](https://github.com/vigetlabs/microcosm), keeps all state in a single app instance. It can be troublesome to pass down this context to child components that need to modify state. Foliage makes it easier to "branch" off a subset of data while still having the ability to reference the root.
-2. Data traversal. It is simpler to run queries for specific records on objects, with a query like data.users[params.id]. However JavaScript objects aren't good at enumeration. Foliage provides some helpers out of the box for this.
-3. It is small. Foliage isn't trying to do too much or be too smart. Like [Microcosm](https://github.com/vigetlabs/microcosm), it will be embedded in other tools and should be as small as possible.
+1. Easier testing. Decouple React components from rest of app. Our
+   Flux-like framework,
+   [Microcosm](https://github.com/vigetlabs/microcosm), keeps all
+   state in a single app instance. It can be troublesome to pass down
+   this context to child components that need to modify state. Foliage
+   makes it easier to "branch" off a subset of data while still having
+   the ability to reference the root.
+2. Easy data traversal. It is simple to traverse object keys, however
+   JavaScript objects aren't good at enumeration. Foliage provides
+   some helpers out of the box for this.
+3. Keep it less than 1kb gzipped. Foliage isn't trying to do too much
+   or be too smart.
 
 ## Opinions
 
 1. Keep a naming convention similar to ES6 maps
-2. Keep it small. There are plenty of other Cursors-like
-   libraries. See [Prior Art](#prior-art)
+2. Don't do too much, but provide a platform for extension
 
 ## Working with Foliage
 
