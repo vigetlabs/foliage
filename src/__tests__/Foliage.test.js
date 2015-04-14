@@ -76,6 +76,30 @@ describe('Foliage', function() {
     })
   })
 
+  describe('when no value is set for a key', function() {
+    let plant = new Foliage()
+
+    it ('returns an empty list when asking for keys', function() {
+      plant.keys().should.eql([])
+    })
+
+    it ('returns an empty list when asking for values', function() {
+      plant.values().should.eql([])
+    })
+
+    describe('when a cursor is empty', function() {
+      let cursor = plant.get('fiz')
+
+      it ('returns an empty list when asking for keys', function() {
+        cursor.keys().should.eql([])
+      })
+
+      it ('returns an empty list when asking for values', function() {
+        cursor.values().should.eql([])
+      })
+    })
+  })
+
   describe('Foliage::toJSON', function() {
     let data = [1,2,3,4]
 

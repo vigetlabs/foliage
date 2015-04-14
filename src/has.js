@@ -5,7 +5,8 @@
  */
 
 module.exports = function has (obj, [ head, ...tail ]) {
-  let hasKey = (head in obj)
+  let isDefined = obj !== void 0
+  let hasKey    = isDefined && (head in obj)
 
   if (tail.length) {
     return !hasKey ? false : has(obj[head], tail)

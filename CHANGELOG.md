@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.2
+
+- Properly handle undefined pathways in `has` and `keys()`
+
+## 0.4.1
+
+- Fix issue with build where npmignore was inherited from gitignore
+
+## 0.4.0
+
+- `Foliage::get` now returns a clone of the current foliage instance
+- Removed event subscription for the time being
+- Removed `some` and `every`
+- Internalize specific methods `sprout` was using to conserve size
+
 ## 0.3.1
 
 - Fixed bug where deeply nested branches would not emit event
