@@ -17,10 +17,9 @@ is      - Check if two pathways are equal
 Extraction
 +--------------+
 keys    - Return an array of all top-level keys
-toArray - same as `values()`
 toJSON  - Serialize the tree into JSON
-valueOf - Get the underlying value represented by an instance
 values  - Return an array of all top-level values
+valueOf - Get the underlying value represented by an instance
 
 Enumeration
 +--------------+

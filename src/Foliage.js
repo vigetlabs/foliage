@@ -62,10 +62,6 @@ Foliage.prototype = {
     return this.valueOf()
   },
 
-  toArray() {
-    return this.values()
-  },
-
   is(branch) {
     return branch.valueOf() == this.valueOf()
   },
@@ -81,7 +77,7 @@ let methods = [ 'map', 'reduce', 'filter', 'forEach' ]
 
 methods.forEach(function(name) {
   Foliage.prototype[name] = function() {
-    return this.toArray()[name](...arguments)
+    return this.values()[name](...arguments)
   }
 })
 
