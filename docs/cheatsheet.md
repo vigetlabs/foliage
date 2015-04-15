@@ -5,6 +5,7 @@
 ```
 Data operations
 +--------------+
+has     - Does a pathway exist?
 get     - Return a cursor to a specific location
 set     - Modify the value at a given location
 remove  - Remove a location in a tree

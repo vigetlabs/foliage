@@ -59,8 +59,7 @@ Foliage.prototype = {
   },
 
   values() {
-    let value = this.valueOf()
-    return this.keys().map(k => value[k])
+    return this.keys().map(this.fetch, this)
   },
 
   valueOf() {
