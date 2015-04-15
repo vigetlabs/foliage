@@ -66,6 +66,10 @@ Foliage.prototype = {
     return this.values()
   },
 
+  is(branch) {
+    return branch.valueOf() == this.valueOf()
+  },
+
   find() {
     return this.filter(...arguments)[0]
   }

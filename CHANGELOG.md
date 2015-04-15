@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0
+
+- Added `is` method for some sugar around equality checks
+
+```
+Uglified : 2.18kb
+Gzipped  : 0.89kb
+```
+
 ## 0.6.0
 
 - Makes better use of internal methods to reduce file size
