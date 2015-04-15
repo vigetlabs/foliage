@@ -1,6 +1,17 @@
 # Changelog
 
-## 5.0.0
+## 0.6.0
+
+
+- Makes better use of internal methods to reduce file size
+- Dissoc no longer automatically prunes empty objects
+
+```
+Uglified : 2.13kb
+Gzipped  : 0.88kb
+```
+
+## 0.5.0
 
 - Added `fetch`, which will return a pathway and allow a fallback if it doesn't exist
 
