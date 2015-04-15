@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.0
+
+- Removed `toArray` alias for `values`
+
+```
+Uglified : 2.13kb
+Gzipped  : 0.879kb
+```
+
 ## 0.7.0
 
 - Added `is` method for some sugar around equality checks
