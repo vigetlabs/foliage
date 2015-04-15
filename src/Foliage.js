@@ -5,9 +5,8 @@
 let assoc  = require('./assoc')
 let dissoc = require('./dissoc')
 let get    = require('./get')
-let hasKey = require('./has')
 
-function Foliage (state, fallback) {
+function Foliage (state) {
   this._path  = []
   this._root  = this
   this._state = state
@@ -17,10 +16,6 @@ Foliage.prototype = {
 
   getPath(key) {
     return key ? this._path.concat(key) : this._path
-  },
-
-  getState() {
-    return this._state
   },
 
   commit(state) {
@@ -39,19 +34,16 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    this.commit(assoc(this.getState(), this.getPath(key), value))
+    this.commit(assoc(this._state, this.getPath(key), value))
   },
 
   remove(key) {
-    this.commit(dissoc(this.getState(), this.getPath(key)))
-  },
-
-  has(key) {
-    return hasKey(this.getState(), this.getPath(key))
+    this.commit(dissoc(this._state, this.getPath(key)))
   },
 
   fetch(key, fallback) {
-    return this.has(key) ? this.get(key).valueOf() : fallback
+    let val = this.get(key).valueOf()
+    return val === undefined ? fallback : val
   },
 
   keys() {
@@ -63,7 +55,7 @@ Foliage.prototype = {
   },
 
   valueOf() {
-    return get(this.getState(), this.getPath())
+    return get(this._state, this.getPath())
   },
 
   toJSON() {

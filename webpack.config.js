@@ -15,7 +15,16 @@ module.exports = {
     devtoolModuleFilenameTemplate: '[resource-path]'
   },
 
-  plugins: [],
+  plugins: [
+    new Webpack.optimize.UglifyJsPlugin({
+      compress: {
+        dead_code : true,
+        unsafe    : true,
+        warnings  : true
+      },
+      mangle: {}
+    })
+  ],
 
   resolve: {
     extensions: [ '', '.js', '.jsx', '.json' ],

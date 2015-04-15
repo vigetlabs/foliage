@@ -11,13 +11,4 @@ describe('dissoc', function() {
 
   })
 
-  describe('when removing a key from a section', function() {
-
-    it ('purges empty values', function() {
-      let sample = { foo: { bip: 'baz' }}
-      dissoc(sample, [ 'foo', 'bip' ]).should.eql({})
-    })
-
-  })
-
 })
