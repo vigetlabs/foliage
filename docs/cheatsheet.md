@@ -5,11 +5,10 @@
 ```
 Data operations
 +--------------+
-fetch   - Retrieve a value with an optional fallback if not present
 get     - Return a cursor to a specific location
-has     - Does a pathway exist?
-remove  - Remove a location in a tree
 set     - Modify the value at a given location
+remove  - Remove a location in a tree
+fetch   - Retrieve a value with an optional fallback if not present
 
 Equality
 +--------------+
