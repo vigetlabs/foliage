@@ -2,7 +2,6 @@
 
 ## 0.6.0
 
-
 - Makes better use of internal methods to reduce file size
 - Dissoc no longer automatically prunes empty objects
 
