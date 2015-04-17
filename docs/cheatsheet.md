@@ -5,10 +5,10 @@
 ```
 Data operations
 +--------------+
-get     - Return a cursor to a specific location
+get     - Retrieve a value with an optional fallback if not present
 set     - Modify the value at a given location
 remove  - Remove a location in a tree
-fetch   - Retrieve a value with an optional fallback if not present
+graft   - Return a cursor to a specific location
 
 Equality
 +--------------+
