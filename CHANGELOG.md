@@ -5,6 +5,11 @@
 - `get` has been renamed `graft`. `fetch` is now `get`. This change is
   designed to make the API feel more like an ES6 map.
 
+```
+Uglified : 2.26kb
+Gzipped  : 0.919kb
+```
+
 ## 0.8.0
 
 - Removed `toArray` alias for `values`
