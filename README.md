@@ -9,26 +9,15 @@
 
 # Foliage
 
-Foliage is lightweight tree that operates on a tree of JavaScript primitives. It is modeled
-loosely on [Om's Cursor](https://github.com/omcljs/om/wiki/Cursors)
-and
-[OmniscientJS's `immstruct`](https://github.com/omniscientjs/immstruct),
-however it is not nearly as ambitious. It compromises on robustness
-and purity for the benefit of build size.
-
-Foliage makes it easier to work with data in component-oriented
-frameworks such as React by allowing data to be passed around in terms
-of references to locations in a global application state object. This
-means that state can be maintained in a single location, however that
-entire structure isn't necessary for an individual component.
+Foliage is lightweight tree that operates on a tree of JavaScript
+primitives. It is inspired by many Cursors libraries/frameworks (see
+[prior art](#prior-art)),
+however it is not nearly as ambitious. Specifically, it sacrifices
+robustness and purity for the benefit of build size.
 
 ## Goals
 
-1. Easier testing. Decouple React components from rest of app. Our
-   Flux-like framework,
-   [Microcosm](https://github.com/vigetlabs/microcosm), keeps all
-   state in a single app instance. It can be troublesome to pass down
-   this context to child components that need to modify state. Foliage
+1. Easier testing. Decouple React components from rest of app. Foliage
    makes it easier to "branch" off a subset of data while still having
    the ability to reference the root.
 2. Easy data traversal. It is simple to traverse object keys, however
@@ -44,30 +33,31 @@ entire structure isn't necessary for an individual component.
 
 ## Working with Foliage
 
-Foliage accepts a seed:
-
-```javascript
-let plant = new Foliage({ berries: true })
-```
-
-## Querying records
-
-`get` pulls data out of a "plant."
+Foliage can retrieve and set data similarly to an ES6 map
 
 ```javascript
 let plant = new Foliage({ berries: true })
 
-plant.get('berries').valueOf() // => true
+// retrieve state
+plant.get('berries') // true
+
+// set state
+plant.set('berries', false)
+
+// remove state
+plant.remove('berries')
 ```
 
-Take out that `valueOf` must be called to retrieve the value out of a
-plant. This is because `get` returns a `branch`. Now let's dig into
-that.
+### Working with subsets of data
 
-## Branches
+`graft` will clone an instance of Foliage and place a cursor to a
+point within its tree:
 
-Calling `get` returns a `branch`. Technically, this is called a
-`cursor`, but let's keep with the dendrology theme.
+```javascript
+let plant = new Foliage({ berries: true })
+
+plant.graft('berries').valueOf() // => true
+```
 
 ```javascript
 let oak = new Foliage({
@@ -77,7 +67,7 @@ let oak = new Foliage({
   }
 })
 
-let squirrels = oak.get('squirrels')
+let squirrels = oak.graft('squirrels')
 ```
 
 In this example, `squirrels` is a subset of `oak` focused on the
@@ -87,7 +77,7 @@ well:
 
 ```javascript
 squirrels.set(['squeakem', 'weight'], 5)
-oak.get(['squirrels', 'squeakem', 'weight']).valueOf() // => 5
+oak.get(['squirrels', 'squeakem', 'weight']) // => 5
 ```
 
 A couple of things are going on here. First, `set` is used to modify
