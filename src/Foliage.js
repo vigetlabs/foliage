@@ -4,7 +4,7 @@
 
 let assoc  = require('./assoc')
 let dissoc = require('./dissoc')
-let get    = require('./get')
+let getIn  = require('./get')
 
 function Foliage (state) {
   this._path  = []
@@ -27,7 +27,7 @@ Foliage.prototype = {
   },
 
   get(key, fallback) {
-    return get(this._state, this.getPath(key), fallback)
+    return getIn(this._state, this.getPath(key), fallback)
   },
 
   set(key, value) {
@@ -58,7 +58,7 @@ Foliage.prototype = {
   },
 
   valueOf() {
-    return get(this._state, this.getPath())
+    return getIn(this._state, this.getPath())
   },
 
   toJSON() {
