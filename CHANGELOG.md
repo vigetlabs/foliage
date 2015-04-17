@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.0
+
+- `get` has been renamed `graft`. `fetch` is now `get`. This change is
+  designed to make the API feel more like an ES6 map.
+
 ## 0.8.0
 
 - Removed `toArray` alias for `values`

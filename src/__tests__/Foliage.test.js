@@ -5,38 +5,14 @@ describe('Foliage', function() {
   let deep    = { first: { second: 2, tertiary: true } }
 
   describe('Foliage::get', function() {
-
-    it ('returns cursor to a given pathway', function() {
-      let plant = new Foliage(shallow)
-      let query = plant.get('first')
-
-      query.getPath().should.eql(['first'])
-    })
-
-    it ('returns a nested given value', function() {
-      let plant = new Foliage(deep)
-      plant.get(['first', 'second']).valueOf().should.equal(2)
-    })
-
-    it ('nests keys from the results of previous queries', function() {
-      let plant  = new Foliage(deep)
-      let first  = plant.get('first')
-      let second = first.get('second')
-
-      second.valueOf().should.equal(2)
-    })
-
-  })
-
-  describe('Foliage::fetched', function() {
     it ('returns a given value', function() {
       let plant = new Foliage(shallow)
-      plant.fetch('first').should.equal(1)
+      plant.get('first').should.equal(1)
     })
 
     it ('returns a fallback if a path is not represented', function() {
       let plant = new Foliage()
-      plant.fetch('first', 'fiz').should.equal('fiz')
+      plant.get('first', 'fiz').should.equal('fiz')
     })
   })
 
@@ -45,44 +21,44 @@ describe('Foliage', function() {
       let plant = new Foliage(shallow)
 
       plant.set('first', 'modified')
-      plant.get('first').valueOf().should.equal('modified')
+      plant.get('first').should.equal('modified')
     })
 
     it ('assumes a single argument sets the entire state', function() {
       let plant = new Foliage({ fiz: 'buz'})
-      let query = plant.get('fiz')
+      let query = plant.graft('fiz')
 
       query.set('foo')
       query.valueOf().should.equal('foo')
 
-      plant.get('fiz').valueOf().should.equal('foo')
+      plant.get('fiz').should.equal('foo')
     })
 
     it ('sets the original state from a cursor', function() {
       let plant = new Foliage(deep)
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.set('second', 'modified')
 
-      plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
+      plant.get([ 'first', 'second' ]).should.equal('modified')
     })
 
     it ('defines pathways that have not been set yet', function() {
       let plant = new Foliage()
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.set('second', 'modified')
 
-      plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
+      plant.get([ 'first', 'second' ]).should.equal('modified')
     })
 
     it ('can set when assuming a pathway', function() {
       let plant = new Foliage()
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.set('second', 'modified')
 
-      plant.get([ 'first', 'second' ]).valueOf().should.equal('modified')
+      plant.get([ 'first', 'second' ]).should.equal('modified')
     })
 
   })
@@ -98,7 +74,7 @@ describe('Foliage', function() {
 
     it ('removes from original state in a cursor', function() {
       let plant = new Foliage(deep)
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.remove('second')
 
@@ -118,7 +94,7 @@ describe('Foliage', function() {
     })
 
     describe('when a cursor is empty', function() {
-      let cursor = plant.get('fiz')
+      let cursor = plant.graft('fiz')
 
       it ('returns an empty list when asking for keys', function() {
         cursor.keys().should.eql([])
@@ -128,6 +104,30 @@ describe('Foliage', function() {
         cursor.values().should.eql([])
       })
     })
+  })
+
+  describe('Foliage::graft', function() {
+
+    it ('returns cursor to a given pathway', function() {
+      let plant = new Foliage(shallow)
+      let query = plant.graft('first')
+
+      query.getPath().should.eql(['first'])
+    })
+
+    it ('returns a nested given value', function() {
+      let plant = new Foliage(deep)
+      plant.graft(['first', 'second']).valueOf().should.equal(2)
+    })
+
+    it ('nests keys from the results of previous queries', function() {
+      let plant  = new Foliage(deep)
+      let first  = plant.graft('first')
+      let second = first.graft('second')
+
+      second.get().should.equal(2)
+    })
+
   })
 
   describe('Foliage::toJSON', function() {
@@ -140,7 +140,7 @@ describe('Foliage', function() {
 
     it ('returns the subset if it is a cursor', function() {
       let plant = new Foliage({ first: data })
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.toJSON().should.equal(data)
     })

@@ -14,7 +14,7 @@ describe('Foliage', function() {
 
     it ('map over cursors', function() {
       let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.map(incr).should.eql([ 2, 3, 4])
     })
@@ -31,7 +31,7 @@ describe('Foliage', function() {
 
     it ('reduce over cursors', function() {
       let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.reduce(sum, 0).should.eql(6)
     })
@@ -65,7 +65,7 @@ describe('Foliage', function() {
 
     it ('finds over cursors', function() {
       let plant = new Foliage({ first: [ 1, 2, 3, 4] })
-      let query = plant.get('first')
+      let query = plant.graft('first')
 
       query.find(even).should.eql(2)
     })

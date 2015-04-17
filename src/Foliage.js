@@ -22,10 +22,8 @@ Foliage.prototype = {
     this._root._state = state
   },
 
-  get(key) {
-    return Object.create(this, {
-      _path : { value: this.getPath(key) }
-    })
+  get(key, fallback) {
+    return get(this._state, this.getPath(key), fallback)
   },
 
   set(key, value) {
@@ -41,9 +39,10 @@ Foliage.prototype = {
     this.commit(dissoc(this._state, this.getPath(key)))
   },
 
-  fetch(key, fallback) {
-    let val = this.get(key).valueOf()
-    return val === undefined ? fallback : val
+  graft(key) {
+    return Object.create(this, {
+      _path : { value: this.getPath(key) }
+    })
   },
 
   keys() {
@@ -51,7 +50,7 @@ Foliage.prototype = {
   },
 
   values() {
-    return this.keys().map(this.fetch, this)
+    return this.keys().map(i => this.get(i))
   },
 
   valueOf() {

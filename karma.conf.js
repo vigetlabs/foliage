@@ -22,7 +22,7 @@ module.exports = function(config) {
       'src/**/__tests__/*.js*' : [ 'webpack', 'sourcemap' ]
     },
 
-    reporters: isIntegration ? [ 'progress', 'coverage' ] : [ 'progress' ],
+    reporters: isIntegration ? [ 'progress', 'coverage' ] : [ 'spec' ],
 
     coverageReporter: {
       reporters: [

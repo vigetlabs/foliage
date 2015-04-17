@@ -6,7 +6,7 @@
 
 let has = require('./has')
 
-module.exports = function get (obj, keys) {
+module.exports = function get (obj, keys, fallback) {
   let [ head, ...tail ] = keys
 
   if (!head) {
@@ -14,7 +14,7 @@ module.exports = function get (obj, keys) {
   }
 
   if (has(obj, keys) === false) {
-    return undefined
+    return fallback
   }
 
   return tail.length ? get(obj[head], tail) : obj[head]

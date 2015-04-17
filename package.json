@@ -1,11 +1,11 @@
 {
   "name": "foliage",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "A cursor like tree data structure.",
   "main": "dist/Foliage.js",
   "scripts": {
     "coveralls": "CONTINUOUS_INTEGRATION=true npm test && coveralls < coverage/report-lcov/lcov.info",
-    "prepublish": "NODE_ENV=production webpack -p",
+    "prepublish": "./scripts/prepublish",
     "test": "NODE_ENV=test karma start",
     "test:once": "CONTINUOUS_INTEGRATION=true npm test"
   },
@@ -14,7 +14,8 @@
     "url": "git://github.com/vigetlabs/foliage.git"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "babel": "^5.x.x",
     "babel-loader": "^5.x.x",
@@ -31,6 +32,7 @@
     "karma-mocha": "^0.1.10",
     "karma-sinon-chai": "^0.3.0",
     "karma-sourcemap-loader": "^0.3.4",
+    "karma-spec-reporter": "0.0.19",
     "karma-webpack": "^1.3.1",
     "source-map-loader": "^0.1.3",
     "webpack": "^1.7.2"

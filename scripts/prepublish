@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+echo
+echo "Building for production..."
+echo
+NODE_ENV=production
+webpack -p --optimize-minimize --optimize-occurence-order --optimize-dedupe
+
+echo "gzipped, the build is:"
+echo "`gzip -c dist/Foliage.js | wc -c` bytes"

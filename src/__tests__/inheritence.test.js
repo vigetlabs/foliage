@@ -10,7 +10,7 @@ describe('Foliage', function() {
     }
 
     let oak   = new Oak()
-    let acorn = oak.get('acorns')
+    let acorn = oak.graft('acorns')
 
     acorn.test().should.equal(true)
   })
