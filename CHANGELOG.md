@@ -4,6 +4,11 @@
 
 - Added `getRoot` method to access root branch
 
+```
+Uglified : 2.3kb
+Gzipped  : 0.927kb
+```
+
 ## 0.9.0
 
 - `get` has been renamed `graft`. `fetch` is now `get`. This change is
