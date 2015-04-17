@@ -139,10 +139,21 @@ describe('Foliage', function() {
     })
 
     it ('returns the subset if it is a cursor', function() {
-      let plant = new Foliage({ first: data })
-      let query = plant.graft('first')
+      let plant = new Foliage({ first: { second: data } })
+      let query = plant.graft([ 'first', 'second' ])
 
       query.toJSON().should.equal(data)
+    })
+  })
+
+  describe('Foliage::getRoot', function() {
+
+    it ('returns the root plant', function() {
+      let plant = new Foliage()
+      let query = plant.graft('child')
+      let subquery = query.graft('child')
+
+      subquery.getRoot().should.equal(plant)
     })
   })
 

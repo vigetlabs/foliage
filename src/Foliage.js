@@ -18,6 +18,10 @@ Foliage.prototype = {
     return key ? this._path.concat(key) : this._path
   },
 
+  getRoot() {
+    return this._root
+  },
+
   commit(state) {
     this._root._state = state
   },

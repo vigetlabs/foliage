@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.0
+
+- Added `getRoot` method to access root branch
+
 ## 0.9.0
 
 - `get` has been renamed `graft`. `fetch` is now `get`. This change is

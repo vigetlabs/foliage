@@ -10,6 +10,10 @@ set     - Modify the value at a given location
 remove  - Remove a location in a tree
 graft   - Return a cursor to a specific location
 
+Traversal
++--------------+
+getRoot - Return the base Foliage instance for a given plant
+
 Equality
 +--------------+
 is      - Check if two pathways are equal
