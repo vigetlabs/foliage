@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.0
+
+- Add `some`, `every`, and `join`
+
+```
+Uglified : 2.32kb
+Gzipped  : 0.940kb
+```
+
 ## 0.10.0
 
 - Added `getRoot` method to access root branch

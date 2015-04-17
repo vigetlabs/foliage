@@ -76,7 +76,7 @@ Foliage.prototype = {
 }
 
 // Add collection methods
-let methods = [ 'map', 'reduce', 'filter', 'forEach' ]
+let methods = [ 'map', 'reduce', 'filter', 'forEach', 'some', 'every', 'join' ]
 
 methods.forEach(function(name) {
   Foliage.prototype[name] = function() {

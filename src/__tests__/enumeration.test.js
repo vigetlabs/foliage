@@ -71,4 +71,29 @@ describe('Foliage', function() {
     })
   })
 
+  describe('Foliage::some', function() {
+    it ('executes the `some` array method', function() {
+      let plant = new Foliage([ 1, 2, 3, 4])
+
+      plant.some(i => i === 2).should.equal(true)
+      plant.some(i => i === 10).should.equal(false)
+    })
+  })
+
+  describe('Foliage::every', function() {
+    it ('executes the `every` array method', function() {
+      let plant = new Foliage([ 1, 2, 3, 4])
+
+      plant.every(i => typeof i === 'number').should.equal(true)
+      plant.every(i => i === 2).should.equal(false)
+    })
+  })
+
+  describe('Foliage::join', function() {
+    it ('executes the `join` array method', function() {
+      let plant = new Foliage([ 1, 2, 3, 4])
+      plant.join().should.equal('1,2,3,4')
+    })
+  })
+
 })
