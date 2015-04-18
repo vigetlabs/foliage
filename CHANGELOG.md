@@ -3,10 +3,12 @@
 ## 0.11.0
 
 - Add `some`, `every`, and `join`
+- Tweaked some internals to get more efficient transpilation
+- Added some internal documentation
 
 ```
-Uglified : 2.32kb
-Gzipped  : 0.940kb
+Uglified : 2.29kb
+Gzipped  : 0.923kb
 ```
 
 ## 0.10.0
