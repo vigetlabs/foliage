@@ -1,5 +1,8 @@
 /**
- * Foliage
+ * A tree data structure that spawns branches pointing to
+ * various locations within itself.
+ *
+ * @param {Object} state - The initial state of the instance
  */
 
 let assoc  = require('./assoc')
@@ -22,12 +25,16 @@ Foliage.prototype = {
     return this._root
   },
 
+  getState() {
+    return this.getRoot()._state
+  },
+
   commit(state) {
-    this._root._state = state
+    this.getRoot()._state = state
   },
 
   get(key, fallback) {
-    return getIn(this._state, this.getPath(key), fallback)
+    return getIn(this.getState(), this.getPath(key), fallback)
   },
 
   set(key, value) {
@@ -36,11 +43,11 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    this.commit(assoc(this._state, this.getPath(key), value))
+    this.commit(assoc(this.getState(), this.getPath(key), value))
   },
 
   remove(key) {
-    this.commit(dissoc(this._state, this.getPath(key)))
+    this.commit(dissoc(this.getState(), this.getPath(key)))
   },
 
   graft(key) {
@@ -58,7 +65,7 @@ Foliage.prototype = {
   },
 
   valueOf() {
-    return getIn(this._state, this.getPath())
+    return getIn(this.getState(), this.getPath())
   },
 
   toJSON() {
@@ -76,7 +83,7 @@ Foliage.prototype = {
 }
 
 // Add collection methods
-let methods = [ 'map', 'reduce', 'filter', 'forEach', 'some', 'every', 'join' ]
+let methods = [ 'sort', 'map', 'reduce', 'filter', 'forEach', 'some', 'every', 'join' ]
 
 methods.forEach(function(name) {
   Foliage.prototype[name] = function() {

@@ -1,6 +1,8 @@
 /**
  * Copy
  * Shallow copy an object.
+ *
+ * @param {Object} obj - The target object
  */
 
 module.exports = function copy(obj) {

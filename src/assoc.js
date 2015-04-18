@@ -1,3 +1,13 @@
+/**
+ * Assoc
+ * Given a list of keys, non-destructively assign a value to a
+ * pathway
+ *
+ * @param {Object} obj  - The target object
+ * @param {Array} keys - A list of string keys
+ * @param {any} value - The value to be assigned
+ */
+
 let copy = require('./copy')
 let get  = require('./get')
 

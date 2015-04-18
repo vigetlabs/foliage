@@ -1,3 +1,11 @@
+/**
+ * Given a list of keys, non-destructively remove a pathway from an
+ * object
+ *
+ * @param {Object} obj  - The target object
+ * @param {Array} keys - A list of string keys
+ */
+
 let copy = require('./copy')
 let has  = require('./has')
 
@@ -12,7 +20,7 @@ module.exports = function dissoc (obj, keys) {
   if (tail.length) {
     clone[head] = dissoc(obj[head], tail)
   } else {
-    delete clone[head]
+    clone[head] = undefined
   }
 
   return clone

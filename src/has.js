@@ -1,7 +1,8 @@
 /**
- * has
- * Follow a chain of given keys down to determine if a value exists.
- * This will get tail-call optimization with Babel
+ * Given a list of keys, check for membership within a given object
+ *
+ * @param {Object} obj - The target object
+ * @param {Array} keys - A list of string keys
  */
 
 module.exports = function has (obj, [ head, ...tail ]) {
