@@ -25,10 +25,7 @@ toJSON  - Serialize the tree into JSON
 values  - Return an array of all top-level values
 valueOf - Get the underlying value represented by an instance
 
-Enumeration
+Array methods
 +--------------+
-filter - Execute filter over the current location
-find   - Execute find over the current location
-map    - Execute map over the current location
-reduce - Execute reduce over the current location
+sort, filter, find, forEach, map, reduce, every, some, join
 ```
