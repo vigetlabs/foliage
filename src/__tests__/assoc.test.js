@@ -22,7 +22,7 @@ describe('assoc', function() {
 
   })
 
-  describe.only('when given an undefined path', function() {
+  describe('when given an undefined path', function() {
 
     it ('properly sets the values', function() {
       let sample = {}
