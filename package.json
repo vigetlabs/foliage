@@ -1,6 +1,6 @@
 {
   "name": "foliage",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "A cursor like tree data structure.",
   "main": "dist/Foliage.js",
   "scripts": {
@@ -14,8 +14,7 @@
     "url": "git://github.com/vigetlabs/foliage.git"
   },
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^5.x.x",
     "babel-loader": "^5.x.x",
