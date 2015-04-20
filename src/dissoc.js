@@ -20,7 +20,7 @@ module.exports = function dissoc (obj, keys) {
   if (tail.length) {
     clone[head] = dissoc(obj[head], tail)
   } else {
-    clone[head] = undefined
+    delete clone[head]
   }
 
   return clone
