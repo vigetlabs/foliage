@@ -5,8 +5,8 @@
 - Added `first` and `last` methods
 
 ```
-Uglified : 2.31kb
-Gzipped  : 0.932kb
+Uglified : 2.4kb
+Gzipped  : 0.955kb
 ```
 
 ## 0.12.0
