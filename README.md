@@ -50,13 +50,13 @@ plant.remove('berries')
 
 ### Working with subsets of data
 
-`graft` will clone an instance of Foliage and place a cursor to a
+`refine` will clone an instance of Foliage and place a cursor to a
 point within its tree:
 
 ```javascript
 let plant = new Foliage({ berries: true })
 
-plant.graft('berries').valueOf() // => true
+plant.refine('berries').valueOf() // => true
 ```
 
 ```javascript
@@ -67,7 +67,7 @@ let oak = new Foliage({
   }
 })
 
-let squirrels = oak.graft('squirrels')
+let squirrels = oak.refine('squirrels')
 ```
 
 In this example, `squirrels` is a subset of `oak` focused on the

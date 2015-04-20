@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.12.0
+
+- Internally, changed the way pathways are produced to reduce logic
+  branching.
+- `graft` has been renamed to `refine`. Graft was a bit too poetic,
+  and `refine` matches other cursors libraries such as
+  [`react-cursor`](https://github.com/dustingetz/react-cursor)
+
+```
+Uglified : 2.31kb
+Gzipped  : 0.932kb
+```
+
+## 0.11.1
+
+- Fixed improper removal in dissoc
+
 ## 0.11.0
 
 - Add `some`, `every`, and `join`
@@ -60,7 +77,8 @@ Gzipped  : 0.88kb
 
 ## 0.5.0
 
-- Added `fetch`, which will return a pathway and allow a fallback if it doesn't exist
+- Added `fetch`, which will return a pathway and allow a fallback if
+  it doesn't exist
 
 ## 0.4.2
 
@@ -83,13 +101,17 @@ Gzipped  : 0.88kb
 
 ## 0.3.0
 
-- Committing new values now causes a change event that will bubble up the tree
-- Calling `set` with one argument will assume the query for the cursor as the key
+- Committing new values now causes a change event that will bubble up
+  the tree
+- Calling `set` with one argument will assume the query for the cursor
+  as the key
 
 ## 0.2.0
 
 - Add toJSON methods
-- Removed internal Cursor class. Foliage all the way down... This means that `React.PropTypes.instanceOf(Foliage` now works consistently.
+- Removed internal Cursor class. Foliage all the way down... This
+  means that `React.PropTypes.instanceOf(Foliage` now works
+  consistently.
 
 ## 0.1.0
 
