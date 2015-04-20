@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.14.2
+
+- Fix ordering in set to eliminate strange bug
+
+```
+Uglified : 2.46kb
+Gzipped  : 0.969kb
+```
+
 ## 0.14.1
 
 - Fix empty key bug

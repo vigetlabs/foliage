@@ -39,8 +39,8 @@ Foliage.prototype = {
 
   set(key, value) {
     if (arguments.length === 1) {
-      key   = undefined
       value = arguments[0]
+      key   = undefined
     }
 
     this.commit(assoc(this.getState(), this.getPath(key), value))
