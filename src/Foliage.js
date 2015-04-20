@@ -18,7 +18,7 @@ function Foliage (state) {
 Foliage.prototype = {
 
   getPath(key) {
-    return key ? this._path.concat(key) : this._path
+    return this._path.concat(key).filter(i => i !== undefined)
   },
 
   getRoot() {
@@ -39,8 +39,8 @@ Foliage.prototype = {
 
   set(key, value) {
     if (arguments.length === 1) {
-      value = arguments[0]
       key   = undefined
+      value = arguments[0]
     }
 
     this.commit(assoc(this.getState(), this.getPath(key), value))
@@ -50,7 +50,7 @@ Foliage.prototype = {
     this.commit(dissoc(this.getState(), this.getPath(key)))
   },
 
-  graft(key) {
+  refine(key) {
     return Object.create(this, {
       _path : { value: this.getPath(key) }
     })

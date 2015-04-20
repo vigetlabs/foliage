@@ -9,6 +9,11 @@ describe('dissoc', function() {
       dissoc(sample, [ 'missing' ]).should.equal(sample)
     })
 
+    it ('completely removes properties', function() {
+      let sample = { foo: 'bar' }
+      dissoc(sample, [ 'foo' ]).should.eql({})
+    })
+
   })
 
 })

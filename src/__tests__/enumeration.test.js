@@ -1,98 +1,67 @@
 import Foliage from '../Foliage'
 
 describe('Foliage', function() {
-  let shallow = { first: 1 }
-  let deep    = { first: { second: 2, tertiary: true } }
+  let array = [1, 2, 3, 4 ]
+  let object = { a: 1, b: 2, c: 3, d: 4 }
 
-  describe('Foliage::map', function() {
-    let incr = i => i + 1
+  let tests = new Foliage([
+    [ 'map',    (i => i + 1) ],
+    [ 'reduce', ((a, b) => a + b), 0],
+    [ 'filter', (n => (n % 2 === 0)) ],
+    [ 'some',   (i => i === 2) ],
+    [ 'every',  (i => i < 10) ],
+    [ 'join',   ', ']
+  ])
 
-    it ('map over top level elements', function() {
-      let plant = new Foliage([ 1, 2, 3])
-      plant.map(incr).should.eql([ 2, 3, 4])
-    })
+  tests.forEach(function([method, ...args]) {
+    describe(`Foliage::${method}`, function() {
 
-    it ('map over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.graft('first')
+      it ('works at the root level with arrays', function() {
+        let plant    = new Foliage(array)
+        let expected = array[method](...args)
 
-      query.map(incr).should.eql([ 2, 3, 4])
-    })
-  })
+        plant[method](...args).should.eql(expected)
+      })
 
-  describe('Foliage::reduce', function() {
-    let sum = (a, b) => a + b
+      it ('works at the root level with objects', function() {
+        let plant    = new Foliage(object)
+        let expected = plant.values()[method](...args)
 
-    it ('reduce over top level elements', function() {
-      let plant = new Foliage([ 1, 2, 3])
+        plant[method](...args).should.eql(expected)
+      })
 
-      plant.reduce(sum, 0).should.eql(6)
-    })
+      it ('works at a sub-level with arrays', function() {
+        let plant    = new Foliage({ body: array })
+        let query    = plant.refine('body')
+        let expected = array[method](...args)
 
-    it ('reduce over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.graft('first')
+        query[method](...args).should.eql(expected)
+      })
 
-      query.reduce(sum, 0).should.eql(6)
-    })
-  })
+      it ('works at a sub-level level with objects', function() {
+        let plant    = new Foliage({ body : object })
+        let query    = plant.refine('body')
+        let expected = query.values()[method](...args)
 
-  describe('Foliage::filter', function() {
-    let even = n => (n % 2 === 0)
+        query[method](...args).should.eql(expected)
+      })
 
-    it ('filter out extraneous values', function() {
-      let plant = new Foliage([ 1, 2, 3])
-
-      plant.filter(even).should.eql([2])
-    })
-
-    it ('filters over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3] })
-      let query = plant.get('first')
-
-      query.filter(even).should.eql([2])
     })
   })
 
+  // Find must be tested separately because the native implementation is not
+  // well supported
   describe('Foliage::find', function() {
     let even = n => (n % 2 === 0)
 
-    it ('returns the first answer of a filter', function() {
+    it ('returns the first answer of an array filter', function() {
       let plant = new Foliage([ 1, 2, 3, 4])
-
-      plant.find(even).should.eql(2)
+      plant.find(even).should.eql(plant.filter(even).unshift())
     })
 
-    it ('finds over cursors', function() {
-      let plant = new Foliage({ first: [ 1, 2, 3, 4] })
-      let query = plant.graft('first')
-
-      query.find(even).should.eql(2)
-    })
-  })
-
-  describe('Foliage::some', function() {
-    it ('executes the `some` array method', function() {
-      let plant = new Foliage([ 1, 2, 3, 4])
-
-      plant.some(i => i === 2).should.equal(true)
-      plant.some(i => i === 10).should.equal(false)
-    })
-  })
-
-  describe('Foliage::every', function() {
-    it ('executes the `every` array method', function() {
-      let plant = new Foliage([ 1, 2, 3, 4])
-
-      plant.every(i => typeof i === 'number').should.equal(true)
-      plant.every(i => i === 2).should.equal(false)
-    })
-  })
-
-  describe('Foliage::join', function() {
-    it ('executes the `join` array method', function() {
-      let plant = new Foliage([ 1, 2, 3, 4])
-      plant.join().should.equal('1,2,3,4')
+    it ('returns the first answer of an object filter', function() {
+      let plant = new Foliage({ a: 1, b: 2, c: 3, d: 4 })
+      plant.find(even).should.eql(plant.filter(even).unshift())
     })
   })
 

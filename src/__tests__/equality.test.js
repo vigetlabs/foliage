@@ -5,8 +5,8 @@ describe('Equality', function() {
   it ('compares equality across branches', function() {
     let plant = new Foliage({ foo: 'bar' })
 
-    let a = plant.graft('foo')
-    let b = plant.graft('foo')
+    let a = plant.refine('foo')
+    let b = plant.refine('foo')
 
     a.is(b).should.equal(true)
   })
@@ -15,7 +15,7 @@ describe('Equality', function() {
     let a = new Foliage({ foo: 'bar' })
     let b = new Foliage({ foo: 'bar' })
 
-    a.graft('foo').is(b.graft('foo')).should.equal(true)
+    a.refine('foo').is(b.refine('foo')).should.equal(true)
   })
 
 })
