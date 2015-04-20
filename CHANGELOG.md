@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.14.0
+
+- Added `size` method
+
+```
+Uglified : 2.45kb
+Gzipped  : 0.967kb
+```
+
 ## 0.13.0
 
 - Added `first` and `last` methods

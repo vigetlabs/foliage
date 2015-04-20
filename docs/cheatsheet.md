@@ -27,5 +27,5 @@ valueOf - Get the underlying value represented by an instance
 
 Collection methods
 +----------------+
-first, last, sort, filter, find, forEach, map, reduce, every, some, join
+first, last, sort, filter, find, forEach, map, reduce, every, some, join, size
 ```

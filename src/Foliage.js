@@ -86,6 +86,10 @@ Foliage.prototype = {
 
   last() {
     return this.values().pop()
+  },
+
+  size() {
+    return this.values().length
   }
 
 }
