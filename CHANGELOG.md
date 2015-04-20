@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.14.1
+
+- Fix empty key bug
+
+```
+Uglified : 2.46kb
+Gzipped  : 0.969kb
+```
+
+
 ## 0.14.0
 
 - Added `size` method

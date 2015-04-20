@@ -21,8 +21,10 @@ module.exports = function assoc (obj, keys, value) {
 
   if (tail.length) {
     clone[head] = assoc((head in clone) ? clone[head] : {}, tail, value)
-  } else {
+  } else if (head) {
     clone[head] = value
+  } else {
+    clone = value
   }
 
   return clone

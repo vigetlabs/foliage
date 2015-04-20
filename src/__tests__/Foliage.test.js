@@ -25,13 +25,13 @@ describe('Foliage', function() {
     })
 
     it ('assumes a single argument sets the entire state', function() {
-      let plant = new Foliage({ fiz: 'buz'})
+      let plant = new Foliage()
       let query = plant.refine('fiz')
 
-      query.set('foo')
-      query.valueOf().should.equal('foo')
+      query.set({ foo: 'bar' })
+      query.get().should.have.property('foo', 'bar')
 
-      plant.get('fiz').should.equal('foo')
+      plant.get('fiz').should.have.property('foo')
     })
 
     it ('sets the original state from a cursor', function() {
@@ -53,12 +53,12 @@ describe('Foliage', function() {
     })
 
     it ('can set when assuming a pathway', function() {
-      let plant = new Foliage()
-      let query = plant.refine('first')
+      let plant = new Foliage({ route: {} })
+      let query = plant.refine('route')
 
-      query.set('second', 'modified')
-
-      plant.get([ 'first', 'second' ]).should.equal('modified')
+      query.set({ params: 'modified' })
+      query.get('params').should.equal('modified')
+      plant.get([ 'route', 'params' ]).should.equal('modified')
     })
 
   })

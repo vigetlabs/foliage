@@ -22,4 +22,15 @@ describe('assoc', function() {
 
   })
 
+  describe.only('when given an undefined path', function() {
+
+    it ('properly sets the values', function() {
+      let sample = {}
+      let output = assoc(sample, [], { foo: 'bar' })
+
+      output.foo.should.equal('bar')
+    })
+
+  })
+
 })

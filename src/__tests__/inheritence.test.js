@@ -15,4 +15,14 @@ describe('Foliage', function() {
     acorn.test().should.equal(true)
   })
 
+  it ('properly sets keys on children', function() {
+    class Oak extends Foliage {}
+
+    let oak   = new Oak({ acorns: {} })
+    let acorn = oak.refine('acorns')
+
+    acorn.set({ fiz: 'buz' })
+    acorn.get('fiz').should.equal('buz')
+  })
+
 })
