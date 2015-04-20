@@ -65,4 +65,32 @@ describe('Foliage', function() {
     })
   })
 
+  describe('Foliage::first', function() {
+    let even = n => (n % 2 === 0)
+
+    it ('returns the first value in an array', function() {
+      let plant = new Foliage([ 1, 2, 3, 4])
+      plant.first().should.equal(1)
+    })
+
+    it ('returns the first value in an object', function() {
+      let plant = new Foliage({ a: 1, b: 2, c: 3, d: 4 })
+      plant.first().should.equal(1)
+    })
+  })
+
+  describe('Foliage::last', function() {
+    let even = n => (n % 2 === 0)
+
+    it ('returns the last value in an array', function() {
+      let plant = new Foliage([ 1, 2, 3, 4])
+      plant.last().should.equal(4)
+    })
+
+    it ('returns the last value of an object', function() {
+      let plant = new Foliage({ a: 1, b: 2, c: 3, d: 4 })
+      plant.last().should.equal(4)
+    })
+  })
+
 })

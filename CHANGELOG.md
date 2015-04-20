@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.0
+
+- Added `first` and `last` methods
+
+```
+Uglified : 2.31kb
+Gzipped  : 0.932kb
+```
+
 ## 0.12.0
 
 - Internally, changed the way pathways are produced to reduce logic

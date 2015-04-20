@@ -78,6 +78,14 @@ Foliage.prototype = {
 
   find() {
     return this.filter(...arguments)[0]
+  },
+
+  first() {
+    return this.values().shift()
+  },
+
+  last() {
+    return this.values().pop()
   }
 
 }
