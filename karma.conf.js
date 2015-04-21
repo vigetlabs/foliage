@@ -1,14 +1,12 @@
 var Webpack = require('webpack')
 var webpack_config = require('./webpack.config')
 
-var isIntegration = process.env.CONTINUOUS_INTEGRATION === 'true'
-
 module.exports = function(config) {
   config.set({
 
-    browsers: [ isIntegration ? 'Firefox' : 'Chrome' ],
+    browsers: [ 'Firefox' ],
 
-    singleRun: isIntegration,
+    singleRun: process.env.CONTINUOUS_INTEGRATION === 'true',
 
     frameworks: [ 'mocha', 'sinon-chai' ],
 
@@ -22,7 +20,7 @@ module.exports = function(config) {
       'src/**/__tests__/*.js*' : [ 'webpack', 'sourcemap' ]
     },
 
-    reporters: isIntegration ? [ 'progress', 'coverage' ] : [ 'spec', 'coverage' ],
+    reporters: [ 'spec', 'coverage' ],
 
     coverageReporter: {
       reporters: [
