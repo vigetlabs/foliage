@@ -9,7 +9,7 @@
 
 let has = require('./has')
 
-module.exports = function get (obj, keys, fallback) {
+module.exports = function get (obj, keys) {
   let [ head, ...tail ] = keys
 
   if (!head) {
@@ -17,7 +17,7 @@ module.exports = function get (obj, keys, fallback) {
   }
 
   if (has(obj, keys) === false) {
-    return fallback
+    return undefined
   }
 
   return tail.length ? get(obj[head], tail) : obj[head]

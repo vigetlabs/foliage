@@ -34,7 +34,8 @@ Foliage.prototype = {
   },
 
   get(key, fallback) {
-    return getIn(this.getState(), this.getPath(key), fallback)
+    let value = getIn(this.getState(), this.getPath(key))
+    return value === void 0 ? fallback : value
   },
 
   set(key, value) {

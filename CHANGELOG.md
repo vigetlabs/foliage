@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.14.3
+
+- Fix fallback issue in `get` where undefined values didn't return the
+  fallback value
+
 ## 0.14.2
 
 - Fix ordering in set to eliminate strange bug
