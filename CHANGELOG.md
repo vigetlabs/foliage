@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.14.4 (Not released)
+## 0.15.0
 
 - Internal improvements to reduce build size
 - Add `indexOf` and `includes` methods, similar to Array methods
