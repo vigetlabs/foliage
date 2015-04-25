@@ -19,8 +19,8 @@ module.exports = function assoc (obj, keys, value) {
   let [ head, ...tail ] = keys
   let clone = copy(obj)
 
-  if (tail.length) {
-    clone[head] = assoc((head in clone) ? clone[head] : {}, tail, value)
+  if (keys.length > 1) {
+    clone[head] = assoc(get(clone, [head]) || {}, tail, value)
   } else if (head) {
     clone[head] = value
   } else {
