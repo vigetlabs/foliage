@@ -25,17 +25,12 @@ Foliage.prototype = {
     return this._root
   },
 
-  getState() {
-    return this.getRoot()._state
-  },
-
   commit(state) {
     this.getRoot()._state = state
   },
 
   get(key, fallback) {
-    let value = getIn(this.getState(), this.getPath(key))
-    return value === void 0 ? fallback : value
+    return getIn(this._state, this.getPath(key), fallback)
   },
 
   set(key, value) {
@@ -44,11 +39,11 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    this.commit(assoc(this.getState(), this.getPath(key), value))
+    this.commit(assoc(this._state, this.getPath(key), value))
   },
 
   remove(key) {
-    this.commit(dissoc(this.getState(), this.getPath(key)))
+    this.commit(dissoc(this._state, this.getPath(key)))
   },
 
   refine(key) {
@@ -71,7 +66,7 @@ Foliage.prototype = {
   },
 
   valueOf() {
-    return getIn(this.getState(), this.getPath())
+    return getIn(this._state, this.getPath())
   },
 
   toJSON() {

@@ -6,8 +6,8 @@
  * @param {Array} keys - A list of string keys
  */
 
-module.exports = function (obj, keys) {
+module.exports = function (obj, keys, fallback) {
   return keys.reduce(function(tree, key) {
-    return tree ? tree[key] : undefined
+    return tree ? tree[key] : fallback
   }, obj)
 }
