@@ -2,8 +2,6 @@ var Webpack = require('webpack')
 var Path    = require('path')
 
 module.exports = {
-  devtool : 'source-map',
-
   entry: {
     Foliage : './src/Foliage.js'
   },
@@ -12,7 +10,8 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
     path: Path.join(__dirname, 'dist'),
-    devtoolModuleFilenameTemplate: '[resource-path]'
+    devtoolModuleFilenameTemplate: '[resource-path]',
+    sourcePrefix: '  '
   },
 
   resolve: {

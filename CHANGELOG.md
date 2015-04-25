@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.14.4 (Not released)
+
+- Internal improvements to reduce build size
+
+```
+Uglified : 2.16kb
+Gzipped  : 0.81kb
+```
+
 ## 0.14.3
 
 - Fix fallback issue in `get` where undefined values didn't return the

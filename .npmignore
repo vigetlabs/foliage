@@ -1,2 +1,6 @@
 coverage
 docs
+CHANGELOG.md
+CONTRIBUTING.md
+karma.conf.js
+scripts

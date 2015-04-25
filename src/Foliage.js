@@ -62,7 +62,12 @@ Foliage.prototype = {
   },
 
   values() {
-    return this.keys().map(i => this.get(i))
+    // An anonymous function is used here instead of
+    // calling `this.get` directly because we have no
+    // fallback value.
+    return this.keys().map(function(key) {
+      return this.get(key)
+    }, this)
   },
 
   valueOf() {
@@ -77,8 +82,8 @@ Foliage.prototype = {
     return branch.valueOf() == this.valueOf()
   },
 
-  find() {
-    return this.filter(...arguments)[0]
+  find(fn, scope) {
+    return this.filter(fn, scope)[0]
   },
 
   first() {

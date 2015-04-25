@@ -165,4 +165,12 @@ describe('Foliage', function() {
     })
   })
 
+  describe('Foliage::values', function() {
+
+    it ('properly handles fallbacks', function() {
+      let plant = new Foliage({ foo: undefined })
+      expect(plant.first()).to.equal(undefined)
+    })
+  })
+
 })

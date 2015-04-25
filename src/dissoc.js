@@ -7,10 +7,10 @@
  */
 
 let copy = require('./copy')
-let has  = require('./has')
+let get  = require('./get')
 
 module.exports = function dissoc (obj, keys) {
-  if (has(obj, keys) === false) {
+  if (get(obj, keys) === undefined) {
     return obj
   }
 
@@ -19,6 +19,11 @@ module.exports = function dissoc (obj, keys) {
 
   if (tail.length) {
     clone[head] = dissoc(obj[head], tail)
+
+    // Autoprune keys
+    if (Object.keys(clone[head]).length === 0) {
+      delete clone[head]
+    }
   } else {
     delete clone[head]
   }

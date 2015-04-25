@@ -4,21 +4,10 @@
  *
  * @param {Object} obj  - The target object
  * @param {Array} keys - A list of string keys
- * @param {any} fallback - A value to return if the pathway is undefined
  */
 
-let has = require('./has')
-
-module.exports = function get (obj, keys) {
-  let [ head, ...tail ] = keys
-
-  if (!head) {
-    return obj
-  }
-
-  if (has(obj, keys) === false) {
-    return undefined
-  }
-
-  return tail.length ? get(obj[head], tail) : obj[head]
+module.exports = function (obj, keys) {
+  return keys.reduce(function(tree, key) {
+    return tree ? tree[key] : undefined
+  }, obj)
 }
