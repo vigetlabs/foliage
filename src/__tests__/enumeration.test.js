@@ -10,7 +10,8 @@ describe('Foliage', function() {
     [ 'filter', (n => (n % 2 === 0)) ],
     [ 'some',   (i => i === 2) ],
     [ 'every',  (i => i < 10) ],
-    [ 'join',   ', ']
+    [ 'join',   ', '],
+    [ 'indexOf', 2]
   ])
 
   tests.forEach(function([method, ...args]) {
@@ -98,6 +99,20 @@ describe('Foliage', function() {
     it ('returns the last value of an object', function() {
       let plant = new Foliage({ a: 1, b: 2, c: 3 })
       plant.size().should.equal(3)
+    })
+  })
+
+  describe('Foliage::includes', function() {
+    it ('returns a boolean if a value is present in an array', function() {
+      let plant = new Foliage([ 1, 2, 3, 4])
+      plant.includes(1).should.equal(true)
+      plant.includes('a').should.equal(false)
+    })
+
+    it ('returns a boolean if a value is present in an object', function() {
+      let plant = new Foliage({ a: 1, b: 2, c: 3, d: 5 })
+      plant.includes(1).should.equal(true)
+      plant.includes('a').should.equal(false)
     })
   })
 

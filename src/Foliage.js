@@ -86,6 +86,10 @@ Foliage.prototype = {
     return this.filter(fn, scope)[0]
   },
 
+  includes(value) {
+    return this.indexOf(value) > -1
+  },
+
   first() {
     return this.values().shift()
   },
@@ -101,7 +105,7 @@ Foliage.prototype = {
 }
 
 // Add collection methods
-let methods = [ 'sort', 'map', 'reduce', 'filter', 'forEach', 'some', 'every', 'join' ]
+let methods = [ 'sort', 'map', 'reduce', 'filter', 'forEach', 'some', 'every', 'join', 'indexOf' ]
 
 methods.forEach(function(name) {
   Foliage.prototype[name] = function() {

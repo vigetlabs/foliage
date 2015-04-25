@@ -3,10 +3,11 @@
 ## 0.14.4 (Not released)
 
 - Internal improvements to reduce build size
+- Add `indexOf` and `includes` methods, similar to Array methods
 
 ```
-Uglified : 2.16kb
-Gzipped  : 0.81kb
+Uglified : 2.21kb
+Gzipped  : 0.837kb
 ```
 
 ## 0.14.3
