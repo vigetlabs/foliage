@@ -1,6 +1,6 @@
 {
   "name": "foliage",
-  "version": "0.15.0",
+  "version": "0.16.0-rc1",
   "description": "A cursor like tree data structure.",
   "main": "src/Foliage.js",
   "scripts": {
