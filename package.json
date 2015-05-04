@@ -2,12 +2,11 @@
   "name": "foliage",
   "version": "0.15.0",
   "description": "A cursor like tree data structure.",
-  "main": "dist/Foliage.js",
+  "main": "src/Foliage.js",
   "scripts": {
-    "coveralls": "CONTINUOUS_INTEGRATION=true npm test && coveralls < coverage/report-lcov/lcov.info",
-    "prepublish": "./scripts/prepublish",
-    "test": "NODE_ENV=test karma start",
-    "test:once": "CONTINUOUS_INTEGRATION=true npm test"
+    "coveralls": "make test-coverage",
+    "prepublish": "make build",
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -19,20 +18,14 @@
     "babel": "^5.x.x",
     "babel-loader": "^5.x.x",
     "babel-runtime": "^5.x.x",
-    "chai": "^2.1.2",
     "coveralls": "^2.11.2",
-    "istanbul": "^0.3.11",
     "istanbul-instrumenter-loader": "^0.1.2",
     "karma": "^0.12.32",
-    "karma-cli": "0.0.4",
     "karma-coverage": "^0.2.7",
     "karma-firefox-launcher": "^0.1.3",
     "karma-mocha": "^0.1.10",
     "karma-sinon-chai": "^0.3.0",
     "karma-sourcemap-loader": "^0.3.4",
-    "karma-spec-reporter": "0.0.19",
-    "karma-webpack": "^1.3.1",
-    "source-map-loader": "^0.1.3",
-    "webpack": "^1.7.2"
+    "karma-webpack": "^1.3.1"
   }
 }

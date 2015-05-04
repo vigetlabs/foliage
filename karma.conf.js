@@ -1,6 +1,3 @@
-var Webpack = require('webpack')
-var webpack_config = require('./webpack.config')
-
 module.exports = function(config) {
   config.set({
 
@@ -20,7 +17,7 @@ module.exports = function(config) {
       'src/**/__tests__/*.js*' : [ 'webpack', 'sourcemap' ]
     },
 
-    reporters: [ 'spec', 'coverage' ],
+    reporters: [ 'progress', 'coverage' ],
 
     coverageReporter: {
       reporters: [
@@ -31,8 +28,11 @@ module.exports = function(config) {
 
     webpack: {
       devtool : 'inline-source-map',
-      plugins : webpack_config.plugins,
-      resolve : webpack_config.resolve,
+
+      resolve : {
+        extensions: [ '', '.js', '.jsx', '.json' ],
+        modulesDirectories: [ 'web_modules', 'node_modules', 'src' ]
+      },
 
       module: {
         loaders: [{

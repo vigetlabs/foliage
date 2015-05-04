@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.16.0
+
+- Instead of compiling to a single file, the build process will now
+  export all modules as individual files.
+- A minified version of the build is available at `./dist/foliage.min.js`.
+
+```
+Uglified : 2.19kb
+Gzipped  : 0.867kb*
+```
+
+\* Without the sourcemap include, this is actually a bit smaller.
+
 ## 0.15.0
 
 - Internal improvements to reduce build size
