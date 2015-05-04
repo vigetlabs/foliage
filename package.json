@@ -13,7 +13,9 @@
     "url": "git://github.com/vigetlabs/foliage.git"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "karma-cli": "0.0.4"
+  },
   "devDependencies": {
     "babel": "^5.x.x",
     "babel-loader": "^5.x.x",
