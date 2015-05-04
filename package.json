@@ -5,7 +5,7 @@
   "main": "src/Foliage.js",
   "scripts": {
     "coveralls": "make test-coverage",
-    "release": "npm publish dist",
+    "release": "make release",
     "prepublish": "make build",
     "test": "make test"
   },
