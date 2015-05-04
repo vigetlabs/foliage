@@ -1,10 +1,11 @@
 {
   "name": "foliage",
-  "version": "0.16.0-rc1",
+  "version": "0.16.0-rc2",
   "description": "A cursor like tree data structure.",
   "main": "src/Foliage.js",
   "scripts": {
     "coveralls": "make test-coverage",
+    "release": "npm publish dist",
     "prepublish": "make build",
     "test": "make test"
   },
