@@ -15,7 +15,7 @@ package.json:
 	node -p 'p=require("./package");p.scripts=p.devDependencies=undefined;JSON.stringify(p,null,2)' > dist/package.json
 
 docs:
-	cp readme.md dist/readme.md
+	cp README.md dist/README.md
 	cp LICENSE.md dist/LICENSE.md
 	cp -r docs dist/docs
 

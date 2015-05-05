@@ -7,8 +7,6 @@
 
 ---
 
-# Foliage
-
 Foliage is lightweight tree that operates on a tree of JavaScript
 primitives. It is inspired by many Cursors libraries/frameworks (see
 [prior art](#prior-art)),
