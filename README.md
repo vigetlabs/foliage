@@ -7,6 +7,8 @@
 
 ---
 
+![Foliage](https://raw.githubusercontent.com/vigetlabs/foliage/master/docs/assets/foliage.svg)
+
 Foliage is lightweight tree that operates on a tree of JavaScript
 primitives. It is inspired by many Cursors libraries/frameworks (see
 [prior art](#prior-art)),
