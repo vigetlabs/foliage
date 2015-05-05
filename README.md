@@ -1,4 +1,4 @@
-[![NPM](https://nodei.co/npm/foliage.png?compact=true)](https://npmjs.org/package/foliage)
+![Foliage](https://raw.githubusercontent.com/vigetlabs/foliage/master/docs/assets/foliage.png)
 
 ---
 
@@ -7,7 +7,7 @@
 
 ---
 
-![Foliage](https://raw.githubusercontent.com/vigetlabs/foliage/master/docs/assets/foliage.png)
+[![NPM](https://nodei.co/npm/foliage.png?compact=true)](https://npmjs.org/package/foliage)
 
 Foliage is lightweight tree that operates on a tree of JavaScript
 primitives. It is inspired by many Cursors libraries/frameworks (see
