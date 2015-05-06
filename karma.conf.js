@@ -1,9 +1,7 @@
 module.exports = function(config) {
   config.set({
 
-    browsers: [ 'Firefox' ],
-
-    singleRun: process.env.CONTINUOUS_INTEGRATION === 'true',
+    browsers: [ 'Firefox', 'Chrome' ],
 
     frameworks: [ 'mocha', 'sinon-chai' ],
 
