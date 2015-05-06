@@ -18,10 +18,9 @@ module.exports = function(config) {
     reporters: [ 'progress', 'coverage' ],
 
     coverageReporter: {
-      reporters: [
-        { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: 'report-lcov' }
-      ]
+      type: 'html',
+      subdir: '.',
+      dir: process.env.CIRCLE_ARTIFACTS || 'coverage'
     },
 
     webpack: {

@@ -1,6 +1,0 @@
-machine:
-  environment:
-    COVERALLS_REPO_TOKEN: z5BAIhvWDsjVMtz20q9aE9HDICSL1Xj92
-test:
-  post:
-    - npm run coveralls

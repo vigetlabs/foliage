@@ -4,7 +4,6 @@
   "description": "A cursor like tree data structure.",
   "main": "src/Foliage.js",
   "scripts": {
-    "coveralls": "make test-coverage",
     "release": "make release",
     "prepublish": "make build",
     "test": "make test",
@@ -15,17 +14,14 @@
     "url": "git://github.com/vigetlabs/foliage.git"
   },
   "license": "MIT",
-  "dependencies": {
-    "karma-cli": "0.0.4"
-  },
   "devDependencies": {
     "babel": "^5.x.x",
     "babel-loader": "^5.x.x",
     "babel-runtime": "^5.x.x",
-    "coveralls": "^2.11.2",
     "istanbul-instrumenter-loader": "^0.1.2",
     "karma": "^0.12.32",
     "karma-chrome-launcher": "^0.1.8",
+    "karma-cli": "0.0.4",
     "karma-coverage": "^0.2.7",
     "karma-firefox-launcher": "^0.1.3",
     "karma-mocha": "^0.1.10",
