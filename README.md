@@ -2,7 +2,7 @@
 
 ---
 
-[![Travis CI](https://travis-ci.org/vigetlabs/foliage.svg)](https://travis-ci.org/vigetlabs/foliage)
+[![Circle CI](https://circleci.com/gh/vigetlabs/foliage.svg?style=svg)](https://circleci.com/gh/vigetlabs/foliage)
 [![Coverage Status](https://coveralls.io/repos/vigetlabs/foliage/badge.svg)](https://coveralls.io/r/vigetlabs/foliage)
 
 ---
