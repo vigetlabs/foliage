@@ -1,4 +1,4 @@
-![Foliage](https://raw.githubusercontent.com/vigetlabs/foliage/master/docs/assets/foliage.png)
+![Foliage](http://f.cl.ly/items/1d0S121d301T3a202u14/foliage.svg)
 
 ---
 
