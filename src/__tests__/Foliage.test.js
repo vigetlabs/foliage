@@ -123,6 +123,17 @@ describe('Foliage', function() {
       query.getPath().should.eql(['first'])
     })
 
+    it ('accepts multiple paths of simple keys', function() {
+      let plant = new Foliage(deep)
+      plant.refine('first', 'second').valueOf().should.equal(2)
+    })
+
+    it ('accepts multiple paths of lists', function() {
+      let plant = new Foliage(deep)
+      plant.refine('first', [ 'second' ]).valueOf().should.equal(2)
+      plant.refine(['first'], [ 'second' ]).valueOf().should.equal(2)
+    })
+
     it ('returns a nested given value', function() {
       let plant = new Foliage(deep)
       plant.refine(['first', 'second']).valueOf().should.equal(2)

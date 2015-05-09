@@ -17,8 +17,8 @@ function Foliage (state) {
 
 Foliage.prototype = {
 
-  getPath(key) {
-    return this._path.concat(key).filter(i => i !== undefined)
+  getPath(/*...keys*/) {
+    return arguments[0] ? this._path.concat(...arguments) : this._path
   },
 
   getRoot() {
@@ -46,9 +46,9 @@ Foliage.prototype = {
     this.commit(dissoc(this._state, this.getPath(key)))
   },
 
-  refine(key) {
+  refine(/*...keys*/) {
     return Object.create(this, {
-      _path : { value: this.getPath(key) }
+      _path : { value: this.getPath(...arguments) }
     })
   },
 
@@ -60,9 +60,7 @@ Foliage.prototype = {
     // An anonymous function is used here instead of
     // calling `this.get` directly because we have no
     // fallback value.
-    return this.keys().map(function(key) {
-      return this.get(key)
-    }, this)
+    return this.keys().map(key => this.get(key))
   },
 
   valueOf() {

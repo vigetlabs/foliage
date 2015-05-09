@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.17.0
+
+- `Foliage::refine` now accepts multiple arguments. These are now
+  equivalent: `foliage.refine(['a', 'b'])`, `foliage.refine('a', 'b')`
+
 ## 0.16.0
 
 - Instead of compiling to a single file, the build process will now
