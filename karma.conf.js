@@ -26,21 +26,11 @@ module.exports = function(config) {
     webpack: {
       devtool : 'inline-source-map',
 
-      resolve : {
-        extensions: [ '', '.js', '.jsx', '.json' ],
-        modulesDirectories: [ 'web_modules', 'node_modules', 'src' ]
-      },
-
       module: {
         loaders: [{
           test    : /\.jsx*$/,
           exclude : /node_modules/,
-          loader  : 'babel',
-          query   : {
-            stage: 1,
-            loose: true,
-            optional: ['runtime']
-          }
+          loader  : 'babel'
         }],
         postLoaders: [{
           test: /\.jsx*$/,

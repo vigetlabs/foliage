@@ -2,7 +2,7 @@ BABEL   = $$(npm bin)/babel
 KARMA   = $$(npm bin)/karma
 WEBPACK = $$(npm bin)/webpack
 
-.PHONY: clean test test-coverage build package.json javascript docs release
+.PHONY: clean test test-coverage build package.json javascript release
 
 build:
 	make clean

@@ -2,5 +2,11 @@
   "stage": 1,
   "loose": true,
   "sourceMaps": "inline",
+  "optional"  : [
+    "minification.propertyLiterals",
+    "minification.memberExpressionLiterals",
+    "utility.inlineEnvironmentVariables",
+    "utility.inlineExpressions"
+  ],
   "blacklist" : [ "strict" ]
 }
