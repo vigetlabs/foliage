@@ -11,8 +11,8 @@
 Foliage is lightweight tree that operates on a tree of JavaScript
 primitives. It is inspired by many Cursors libraries/frameworks (see
 [prior art](#prior-art)),
-however it is not nearly as ambitious. Specifically, it sacrifices
-robustness and purity for the benefit of build size.
+however it is not nearly as ambitious. It sacrifices robustness and
+purity for the sake of embeddability.
 
 ## Goals
 

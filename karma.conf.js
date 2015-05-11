@@ -5,6 +5,7 @@ module.exports = function(config) {
 
     frameworks: [ 'mocha', 'sinon-chai' ],
 
+    autoWatchBatchDelay: 400,
     logLevel: config.LOG_ERROR,
 
     files: [
@@ -30,7 +31,8 @@ module.exports = function(config) {
         loaders: [{
           test    : /\.jsx*$/,
           exclude : /node_modules/,
-          loader  : 'babel'
+          loader  : 'babel',
+          query   : { optional: ['runtime'] }
         }],
         postLoaders: [{
           test: /\.jsx*$/,
