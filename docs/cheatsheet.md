@@ -8,7 +8,8 @@ Data operations
 get     - Retrieve a value with an optional fallback if not present
 set     - Modify the value at a given location
 remove  - Remove a location in a tree
-refine   - Return a cursor to a specific location
+refine  - Return a cursor to a specific location
+clear   - Revert state to undefined
 
 Traversal
 +----------------+
