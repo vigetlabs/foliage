@@ -173,4 +173,15 @@ describe('Foliage', function() {
     })
   })
 
+  describe('Foliage::clear', function() {
+
+    it ('nullifies the current value', function() {
+      let plant = new Foliage({ foo: 'hey' })
+
+      plant.clear()
+
+      expect(plant.get('foo')).to.equal(undefined)
+    })
+  })
+
 })

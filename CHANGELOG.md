@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.0
+
+- Add `clear` method to implement a more complete Map api
+
+```
+Uglified : 2.23kb
+Gzipped  : 0.878kb
+```
+
 ## 0.16.0
 
 - Instead of compiling to a single file, the build process will now

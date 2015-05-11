@@ -12,7 +12,8 @@ let getIn  = require('./get')
 function Foliage (state) {
   this._path  = []
   this._root  = this
-  this._state = state
+
+  this.commit(state)
 }
 
 Foliage.prototype = {
@@ -27,6 +28,10 @@ Foliage.prototype = {
 
   commit(state) {
     this.getRoot()._state = state
+  },
+
+  clear() {
+    this.commit()
   },
 
   get(key, fallback) {
