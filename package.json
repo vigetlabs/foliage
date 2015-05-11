@@ -1,6 +1,6 @@
 {
   "name": "foliage",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "private": true,
   "description": "A cursor like tree data structure.",
   "main": "src/Foliage.js",
@@ -10,11 +10,13 @@
     "test": "make test",
     "test:watch": "make test-watch"
   },
-  "contributors": [{
-    "name": "Nate Hunzaker",
-    "email": "nate.hunzaker@viget.com",
-    "url": "http://viget.com"
-  }],
+  "contributors": [
+    {
+      "name": "Nate Hunzaker",
+      "email": "nate.hunzaker@viget.com",
+      "url": "http://viget.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/vigetlabs/foliage.git"
