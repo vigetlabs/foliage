@@ -184,4 +184,33 @@ describe('Foliage', function() {
     })
   })
 
+  describe('Foliage::update', function() {
+
+    it ('can replace multiple keys at a point', function() {
+      let plant = new Foliage({ foo: 'hey' })
+
+      plant.update('foo', { one: 1, two: 2 })
+
+      plant.get('foo').should.have.property('one', 1)
+      plant.get('foo').should.have.property('two', 2)
+    })
+
+    it ('can replace multiple keys with no point', function() {
+      let plant = new Foliage({ foo: 'hey' })
+
+      plant.update({ foo: 'bar', baz: 'bip' })
+
+      plant.get('foo').should.equal('bar')
+      plant.get('baz').should.equal('bip')
+    })
+
+    it ('can operate on arrays', function() {
+      let plant = new Foliage([ 'not updated' ])
+
+      plant.update([ 'updated' ])
+
+      plant.get(0).should.equal('updated')
+    })
+  })
+
 })

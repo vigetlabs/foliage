@@ -47,6 +47,17 @@ Foliage.prototype = {
     this.commit(assoc(this._state, this.getPath(key), value))
   },
 
+  update(key, obj) {
+    if (arguments.length === 1) {
+      obj = arguments[0]
+      key = undefined
+    }
+
+    for (let prop in obj) {
+      this.set([ key, prop ], obj[prop])
+    }
+  },
+
   remove(key) {
     this.commit(dissoc(this._state, this.getPath(key)))
   },

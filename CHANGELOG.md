@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.18.0
+
+- Added `update` function to update more than one key at a time
+
 ## 0.17.0
 
 - Add `clear` method to implement a more complete Map api

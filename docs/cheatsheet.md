@@ -10,6 +10,7 @@ set     - Modify the value at a given location
 remove  - Remove a location in a tree
 refine  - Return a cursor to a specific location
 clear   - Revert state to undefined
+update  - Fold an object or array on top of a location
 
 Traversal
 +----------------+
