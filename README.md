@@ -6,8 +6,6 @@ primitives. It is inspired by many Cursors libraries/frameworks (see
 however it is not nearly as ambitious. It sacrifices robustness and
 purity for the sake of embeddability.
 
----
-
 [![Circle CI](https://circleci.com/gh/vigetlabs/foliage.svg?style=svg)](https://circleci.com/gh/vigetlabs/foliage)
 
 ---
