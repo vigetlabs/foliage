@@ -1,18 +1,16 @@
 ![Foliage](http://f.cl.ly/items/1d0S121d301T3a202u14/foliage.svg)
 
----
-
-[![Circle CI](https://circleci.com/gh/vigetlabs/foliage.svg?style=svg)](https://circleci.com/gh/vigetlabs/foliage)
-
----
-
-[![NPM](https://nodei.co/npm/foliage.png?compact=true)](https://npmjs.org/package/foliage)
-
 Foliage is lightweight tree that operates on a tree of JavaScript
 primitives. It is inspired by many Cursors libraries/frameworks (see
 [prior art](#prior-art)),
 however it is not nearly as ambitious. It sacrifices robustness and
 purity for the sake of embeddability.
+
+---
+
+[![Circle CI](https://circleci.com/gh/vigetlabs/foliage.svg?style=svg)](https://circleci.com/gh/vigetlabs/foliage)
+
+---
 
 ## Goals
 
