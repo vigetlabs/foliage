@@ -212,5 +212,4 @@ describe('Foliage', function() {
       plant.get(0).should.equal('updated')
     })
   })
-
 })

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.19.0
+
+- Foliage is now an event emitter (using Diode). It will trigger a
+  single event when a change occurs, passing state as the first
+  argument.
+
+```
+Uglified : 2.886kb
+Gzipped  : 1.104kb
+```
+
 ## 0.18.0
 
 - Added `update` function to update more than one key at a time

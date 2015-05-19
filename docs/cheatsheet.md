@@ -27,6 +27,13 @@ toJSON  - Serialize the tree into JSON
 values  - Return an array of all top-level values
 valueOf - Get the underlying value represented by an instance
 
+Pub/Sub (From Foliage)
++----------------+
+listen  - Add a change listener (aliases: subscribe)
+ignore  - Remove a change listener (aliases: unsubscribe)
+emit    - Trigger listeners (aliases: publish)
+volley  - Lazily trigger `emit`
+
 Collection methods
 +----------------+
 first, last, sort, filter, find, forEach, map, reduce, every, some, join, size

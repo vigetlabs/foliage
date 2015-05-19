@@ -8,8 +8,11 @@
 let assoc  = require('./assoc')
 let dissoc = require('./dissoc')
 let getIn  = require('./get')
+let Diode  = require('diode')
 
 function Foliage (state) {
+  Diode(this)
+
   this._path  = []
   this._root  = this
 
@@ -28,6 +31,7 @@ Foliage.prototype = {
 
   commit(state) {
     this.getRoot()._state = state
+    this.volley(state)
   },
 
   clear() {
