@@ -1,7 +1,7 @@
 module.exports = function(config) {
   config.set({
 
-    browsers: [ 'Firefox', 'Chrome' ],
+    browsers: [ 'Firefox' ],
 
     frameworks: [ 'mocha', 'sinon-chai' ],
 
@@ -13,10 +13,10 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'src/**/__tests__/*.js*' : [ 'webpack', 'sourcemap' ]
+      'src/**/__tests__/*.js*' : [ 'webpack' ]
     },
 
-    reporters: [ 'progress', 'coverage' ],
+    reporters: [ 'nyan', 'coverage' ],
 
     coverageReporter: {
       type: 'html',
@@ -45,5 +45,5 @@ module.exports = function(config) {
     webpackServer: {
       noInfo: true
     }
-  });
-};
+  })
+}
