@@ -2,35 +2,23 @@ import assoc from '../assoc'
 
 describe('assoc', function() {
 
-  describe('when assigning a value that already is present', function() {
-
-    it ('does nothing', function() {
-      let sample = { foo: 'bar' }
-      assoc(sample, [ 'foo' ], 'bar').should.equal(sample)
-    })
-
+  it ('makes no change when assigned the same values', function() {
+    let sample = { foo: 'bar' }
+    assoc(sample, [ 'foo' ], 'bar').should.equal(sample)
   })
 
-  describe('when assigning a deeper than a pathway that exists', function() {
+  it ('makes objects non-existant pathways', function() {
+    let sample = {}
+    let output = assoc(sample, [ 'foo', 'step' ], 'bar')
 
-    it ('sets the intermediary values to objects', function() {
-      let sample = {}
-      let output = assoc(sample, [ 'foo', 'step' ], 'bar')
-
-      output.foo.step.should.equal('bar')
-    })
-
+    output.foo.step.should.equal('bar')
   })
 
-  describe('when given an undefined path', function() {
+  it ('it properly sets the value when given no pathway', function() {
+    let sample = {}
+    let output = assoc(sample, [], { foo: 'bar' })
 
-    it ('properly sets the values', function() {
-      let sample = {}
-      let output = assoc(sample, [], { foo: 'bar' })
-
-      output.foo.should.equal('bar')
-    })
-
+    output.foo.should.equal('bar')
   })
 
 })
