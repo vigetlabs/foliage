@@ -7,12 +7,14 @@
  * @param {any} fallback - If the value is undefined, a fallback
  */
 
+let isImmutable = require('./isImmutable')
+
 function pluck(obj, key) {
   return obj ? obj[key] : undefined
 }
 
 module.exports = function (obj, keys, fallback) {
-  let value = keys.reduce(pluck, obj)
+  let value = isImmutable(obj) ? obj.getIn(keys) : keys.reduce(pluck, obj)
 
   return value === undefined ? fallback : value
 }

@@ -1,20 +1,45 @@
-import dissoc from '../dissoc'
+import dissoc   from '../dissoc'
+import get       from '../get'
+import Immutable from 'immutable'
 
 describe('dissoc', function() {
 
-  it ('does not modify missing keys', function() {
+  describe('Plain ole\' JavaScript', function() {
     let sample = { foo: 'bar' }
-    dissoc(sample, [ 'missing' ]).should.equal(sample)
+
+    it ('does not modify missing keys', function() {
+      dissoc(sample, [ 'missing' ]).should.equal(sample)
+    })
+
+    it ('removes properties', function() {
+      dissoc(sample, [ 'foo' ]).should.eql({})
+    })
+
+    it ('prunes empty objects', function() {
+      dissoc({ one: { two: 'three' } }, [ 'one', 'two' ]).should.eql({})
+    })
   })
 
-  it ('removes properties', function() {
-    let sample = { foo: 'bar' }
-    dissoc(sample, [ 'foo' ]).should.eql({})
+  describe('Immutable.Map', function() {
+    let sample = Immutable.Map({ foo: 'bar' })
+
+    it ('does not modify missing keys', function() {
+      dissoc(sample, [ 'missing' ]).should.equal(sample)
+    })
+
+    it ('removes properties', function() {
+      let next = dissoc(sample, [ 'foo' ])
+      next.size.should.equal(0)
+    })
   })
 
-  it ('prunes empty objects', function() {
-    let sample = { one: { two: 'three' } }
-    dissoc(sample, [ 'one', 'two' ]).should.eql({})
+  describe('Immutable.List', function() {
+    let sample = Immutable.List([ 'one', 'two'])
+
+    it ('does not modify missing keys', function() {
+      let next = dissoc(sample, [ 0 ])
+      next.get(0).should.equal('two')
+    })
   })
 
 })

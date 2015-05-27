@@ -26,6 +26,7 @@
     "babel": "~5",
     "babel-loader": "~5",
     "babel-runtime": "~5",
+    "immutable": "^3.7.3",
     "istanbul-instrumenter-loader": "~0.1",
     "karma": "~0.12",
     "karma-cli": "~0.0",
