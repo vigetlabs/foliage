@@ -5,16 +5,18 @@
  * @param {Object} state - The initial state of the instance
  */
 
-let assoc  = require('./assoc')
-let dissoc = require('./dissoc')
-let getIn  = require('./get')
-let Diode  = require('diode')
+let assoc    = require('./assoc')
+let dissoc   = require('./dissoc')
+let getIn    = require('./get')
+let Diode    = require('diode')
+let keysOf   = require('./keys')
+let valuesOf = require('./values')
 
 function Foliage (state) {
   Diode(this)
 
-  this._path  = []
-  this._root  = this
+  this._path = []
+  this._root = this
 
   this.commit(state)
 }
@@ -73,16 +75,11 @@ Foliage.prototype = {
   },
 
   keys() {
-    return Object.keys(this.valueOf() || {})
+    return keysOf(this.valueOf())
   },
 
   values() {
-    // An anonymous function is used here instead of
-    // calling `this.get` directly because we have no
-    // fallback value.
-    return this.keys().map(function(key) {
-      return this.get(key)
-    }, this)
+    return valuesOf(this.valueOf())
   },
 
   valueOf() {

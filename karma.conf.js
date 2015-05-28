@@ -6,17 +6,16 @@ module.exports = function(config) {
     frameworks: [ 'mocha', 'sinon-chai' ],
 
     autoWatchBatchDelay: 400,
-    logLevel: config.LOG_ERROR,
 
     files: [
       'src/**/__tests__/*.js*'
     ],
 
     preprocessors: {
-      'src/**/__tests__/*.js*' : [ 'webpack' ]
+      'src/**/__tests__/*.js*' : ['webpack', 'sourcemap']
     },
 
-    reporters: [ 'nyan', 'coverage' ],
+    reporters: [ 'progress', 'coverage' ],
 
     coverageReporter: {
       type: 'html',
@@ -26,7 +25,6 @@ module.exports = function(config) {
 
     webpack: {
       devtool : 'inline-source-map',
-
       module: {
         loaders: [{
           test    : /\.jsx*$/,

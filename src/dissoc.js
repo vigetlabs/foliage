@@ -6,10 +6,15 @@
  * @param {Array} keys - A list of string keys
  */
 
-let copy = require('./copy')
-let get  = require('./get')
+let copy        = require('./copy')
+let get         = require('./get')
+let isImmutable = require('./isImmutable')
 
 module.exports = function dissoc (obj, keys) {
+  if (isImmutable(obj)) {
+    return obj.removeIn(keys)
+  }
+
   if (get(obj, keys) === undefined) {
     return obj
   }

@@ -10,8 +10,13 @@
 
 let copy = require('./copy')
 let get  = require('./get')
+let isImmutable = require('./isImmutable')
 
 module.exports = function assoc (obj, keys, value) {
+  if (isImmutable(obj)) {
+    return obj.setIn(keys, value)
+  }
+
   if (get(obj, keys) === value) {
     return obj
   }
