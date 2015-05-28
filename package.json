@@ -33,8 +33,8 @@
     "karma-coverage": "~0.3",
     "karma-firefox-launcher": "~0.1",
     "karma-mocha": "~0.1",
-    "karma-nyan-reporter": "~0.0",
     "karma-sinon-chai": "~0.3",
+    "karma-sourcemap-loader": "^0.3.4",
     "karma-webpack": "~1.5"
   },
   "dependencies": {
