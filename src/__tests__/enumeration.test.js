@@ -1,86 +1,37 @@
 import Foliage   from '../Foliage'
 import Immutable from 'immutable'
 
-describe('Enumeration', function() {
-
-  let array = [1, 2, 3, 4 ]
+describe('Foliage', function() {
+  let array  = [1, 2, 3, 4 ]
   let object = { a: 1, b: 2, c: 3, d: 4 }
-  let map = Immutable.Map(object)
-  let list = Immutable.Set(array)
+  let map    = Immutable.Map(object)
+  let list   = Immutable.List(array)
+  let record = Immutable.Record(object)()
 
   let tests = new Foliage([
     [ 'map',    (i => i + 1) ],
     [ 'reduce', ((a, b) => a + b), 0],
     [ 'filter', (n => (n % 2 === 0)) ],
     [ 'some',   (i => i === 2) ],
-    [ 'every',  (i => i < 10) ],
-    [ 'join',   ', '],
-    [ 'indexOf', 2]
+    [ 'every',  (i => i < 10) ]
   ])
 
   tests.forEach(function([method, ...args]) {
     describe(`Foliage::${method}`, function() {
 
-      it ('works at the root level with arrays', function() {
+      it ('works arrays', function() {
         let plant    = new Foliage(array)
         let expected = array[method](...args)
 
         plant[method](...args).should.eql(expected)
       })
 
-      it ('works at the root level with objects', function() {
+      it ('works objects', function() {
         let plant    = new Foliage(object)
         let expected = plant.values()[method](...args)
 
         plant[method](...args).should.eql(expected)
       })
-
-      it ('works at the root level with maps', function() {
-        let plant    = new Foliage(map)
-        let expected = plant.values()[method](...args)
-
-        plant[method](...args).should.eql(expected)
-      })
-
-      it ('works at the root level with sets', function() {
-        let plant    = new Foliage(map)
-        let expected = plant.values()[method](...args)
-
-        plant[method](...args).should.eql(expected)
-      })
-
-      it ('works at a sub-level with arrays', function() {
-        let plant    = new Foliage({ body: array })
-        let query    = plant.refine('body')
-        let expected = array[method](...args)
-
-        query[method](...args).should.eql(expected)
-      })
-
-      it ('works at a sub-level level with objects', function() {
-        let plant    = new Foliage({ body : object })
-        let query    = plant.refine('body')
-        let expected = query.values()[method](...args)
-
-        query[method](...args).should.eql(expected)
-      })
-
-      it ('works at a sub-level with sets', function() {
-        let plant    = new Foliage({ body: set })
-        let query    = plant.refine('body')
-        let expected = array[method](...args)
-
-        query[method](...args).should.eql(expected)
-      })
-
-      it ('works at a sub-level level with maps', function() {
-        let plant    = new Foliage({ body : map })
-        let query    = plant.refine('body')
-        let expected = query.values()[method](...args)
-
-        query[method](...args).should.eql(expected)
-      })
-
     })
   })
 
@@ -133,20 +84,6 @@ describe('Enumeration', function() {
     it ('returns the last value of an object', function() {
       let plant = new Foliage({ a: 1, b: 2, c: 3 })
       plant.size().should.equal(3)
-    })
-  })
-
-  describe('Foliage::includes', function() {
-    it ('returns a boolean if a value is present in an array', function() {
-      let plant = new Foliage([ 1, 2, 3, 4])
-      plant.includes(1).should.equal(true)
-      plant.includes('a').should.equal(false)
-    })
-
-    it ('returns a boolean if a value is present in an object', function() {
-      let plant = new Foliage({ a: 1, b: 2, c: 3, d: 5 })
-      plant.includes(1).should.equal(true)
-      plant.includes('a').should.equal(false)
     })
   })
 

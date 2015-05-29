@@ -5,12 +5,8 @@
  * @param {Object} state - The initial state of the instance
  */
 
-let assoc    = require('./assoc')
-let dissoc   = require('./dissoc')
-let getIn    = require('./get')
-let Diode    = require('diode')
-let keysOf   = require('./keys')
-let valuesOf = require('./values')
+let Diode   = require('diode')
+let adaptor = require('./adaptors')
 
 function Foliage (state) {
   Diode(this)
@@ -22,7 +18,6 @@ function Foliage (state) {
 }
 
 Foliage.prototype = {
-
   getPath(key) {
     return this._path.concat(key).filter(i => i !== undefined)
   },
@@ -41,7 +36,7 @@ Foliage.prototype = {
   },
 
   get(key, fallback) {
-    return getIn(this._state, this.getPath(key), fallback)
+    return adaptor(this._state, 'get', this.getPath(key)) || fallback
   },
 
   set(key, value) {
@@ -50,7 +45,7 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    this.commit(assoc(this._state, this.getPath(key), value))
+    this.commit(adaptor(this._state, 'set', this.getPath(key), value))
   },
 
   update(key, obj) {
@@ -65,7 +60,7 @@ Foliage.prototype = {
   },
 
   remove(key) {
-    this.commit(dissoc(this._state, this.getPath(key)))
+    this.commit(adaptor(this._state, 'remove', this.getPath(key)))
   },
 
   refine(key) {
@@ -75,15 +70,15 @@ Foliage.prototype = {
   },
 
   keys() {
-    return keysOf(this.valueOf())
+    return adaptor(this.valueOf(), 'keys')
   },
 
   values() {
-    return valuesOf(this.valueOf())
+    return adaptor(this.valueOf(), 'values')
   },
 
   valueOf() {
-    return getIn(this._state, this.getPath())
+    return adaptor(this._state, 'get', this.getPath())
   },
 
   toJSON() {
@@ -96,10 +91,6 @@ Foliage.prototype = {
 
   find(fn, scope) {
     return this.filter(fn, scope)[0]
-  },
-
-  includes(value) {
-    return this.indexOf(value) > -1
   },
 
   first() {
@@ -117,7 +108,7 @@ Foliage.prototype = {
 }
 
 // Add collection methods
-let methods = [ 'sort', 'map', 'reduce', 'filter', 'forEach', 'some', 'every', 'join', 'indexOf' ]
+let methods = [ 'sort', 'map', 'reduce', 'filter', 'forEach', 'some', 'every']
 
 methods.forEach(function(name) {
   Foliage.prototype[name] = function() {
