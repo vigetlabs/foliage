@@ -15,7 +15,11 @@ module.exports = function(config) {
       'src/**/__tests__/*.js*' : ['webpack', 'sourcemap']
     },
 
-    reporters: [ 'progress', 'coverage' ],
+    reporters: [ 'mocha', 'coverage' ],
+
+    mochaReporter: {
+      output: 'minimal'
+    },
 
     coverageReporter: {
       type: 'html',
