@@ -1,12 +1,24 @@
 /**
- * Object Adaptor
+ * Value Adaptor
  */
 
-let ValueAdaptor  = require('./value')
+let ObjectAdaptor = {
+  copy   : require('../copy'),
+  get    : require('../get'),
+  set    : require('../assoc'),
+  remove : require('../dissoc'),
 
-let ObjectAdaptor = Object.create(ValueAdaptor)
+  test() {
+    return true
+  },
 
-ObjectAdaptor.test = obj => obj && !Array.isArray(obj) && typeof obj === 'object'
-ObjectAdaptor.copy = require('../copy')
+  keys(obj) {
+    return Object.keys(obj || {})
+  },
+
+  values(obj) {
+    return ObjectAdaptor.keys(obj).map(key => obj[key])
+  }
+}
 
 module.exports = ObjectAdaptor

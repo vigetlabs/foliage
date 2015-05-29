@@ -1,19 +1,15 @@
-const ArrayAdaptor     = require('./array')
-const ObjectAdaptor    = require('./object')
-const ImmutableAdaptor = require('./immutable')
-const ValueAdaptor     = require('./value')
+let ArrayAdaptor     = require('./array')
+let ImmutableAdaptor = require('./immutable')
+let ObjectAdaptor    = require('./object')
 
-const priority = [
-  ImmutableAdaptor,
-  ArrayAdaptor,
-  ObjectAdaptor,
-  ValueAdaptor
+let priority = [
+  require('./immutable'),
+  require('./array'),
+  require('./object')
 ]
 
-const fallback = ValueAdaptor
-
 module.exports = function(obj, method, ...params) {
-  let adaptor = priority.filter(kind => kind.test(obj))[0] || fallback
+  let adaptor = priority.filter(kind => kind.test(obj))[0]
 
   return adaptor[method].apply(adaptor, [obj].concat(params))
 }
