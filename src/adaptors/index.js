@@ -11,5 +11,9 @@ let priority = [
 module.exports = function(obj, method, ...params) {
   let adaptor = priority.filter(kind => kind.test(obj))[0]
 
+  if (process.env.NODE_ENV !== 'production' && !adaptor[method]) {
+    throw Error(`Adaptor ${ adaptor } does not impliment "${ method }"`)
+  }
+
   return adaptor[method].apply(adaptor, [obj].concat(params))
 }

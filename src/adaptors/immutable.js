@@ -27,6 +27,10 @@ let ImmutableAdaptor = {
 
   values(obj) {
     return obj.map(value => value).toArray()
+  },
+
+  toString() {
+    return 'ImmutableAdaptor'
   }
 }
 
