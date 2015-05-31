@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.19.1
+
+- Only emit change with a failed equality check
+
 ## 0.19.0
 
 - Foliage is now an event emitter (using Diode). It will trigger a

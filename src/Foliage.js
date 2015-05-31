@@ -29,9 +29,14 @@ Foliage.prototype = {
     return this._root
   },
 
-  commit(state) {
-    this.getRoot()._state = state
-    this.volley(state)
+  commit(next) {
+    let root    = this.getRoot()
+    let current = root._state
+
+    if (current !== next) {
+      root._state = next
+      this.volley(root._state)
+    }
   },
 
   clear() {
