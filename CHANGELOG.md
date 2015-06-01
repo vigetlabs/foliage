@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.20.0
+
+- Upgrade Diode
+
 ## 0.19.1
 
 - Only emit change with a failed equality check

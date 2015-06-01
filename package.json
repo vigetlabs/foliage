@@ -37,6 +37,6 @@
     "karma-webpack": "~1.5"
   },
   "dependencies": {
-    "diode": "~4.3"
+    "diode": "~4.4"
   }
 }
