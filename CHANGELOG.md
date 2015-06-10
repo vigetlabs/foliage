@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.21.0 (Not released)
+
+- `commit` will always default to the same empty object assignment
+  when given `null`. `undefined` will default to current state
+
 ## 0.20.0
 
 - Upgrade Diode

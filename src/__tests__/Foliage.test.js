@@ -4,6 +4,10 @@ describe('Foliage', function() {
   let shallow = { first: 1 }
   let deep    = { first: { second: 2, tertiary: true } }
 
+  it ('always starts with the same state', function() {
+    new Foliage().is(new Foliage()).should.equal(true)
+  })
+
   describe('Foliage::get', function() {
     it ('returns a given value', function() {
       let plant = new Foliage(shallow)
@@ -13,6 +17,33 @@ describe('Foliage', function() {
     it ('returns a fallback if a path is not represented', function() {
       let plant = new Foliage()
       plant.get('first', 'fiz').should.equal('fiz')
+    })
+  })
+
+  describe('When commiting new state', function() {
+    it ('commits the same empty state on null', function(done) {
+      let plant = new Foliage()
+
+      plant.subscribe(function() {
+        throw Error('Should not have emitted but did')
+      })
+
+      plant.commit(null)
+
+      setTimeout(done, 100)
+    })
+
+    it ('commits nothing if given `undefined`', function(done) {
+      let plant = new Foliage({ foo: 'bar' })
+
+      plant.subscribe(function() {
+        throw Error('Should not have emitted but did')
+      })
+
+      plant.commit()
+      plant.commit(undefined)
+
+      setTimeout(done, 100)
     })
   })
 

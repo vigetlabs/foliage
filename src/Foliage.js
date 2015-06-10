@@ -10,11 +10,14 @@ let dissoc = require('./dissoc')
 let getIn  = require('./get')
 let Diode  = require('diode')
 
+const EMPTY = {}
+
 function Foliage (state) {
   Diode(this)
 
-  this._path  = []
-  this._root  = this
+  this._path    = []
+  this._root    = this
+  this._changes = this._state = EMPTY
 
   this.commit(state)
 }
@@ -29,9 +32,13 @@ Foliage.prototype = {
     return this._root
   },
 
-  commit(next) {
+  commit(next=this._state) {
     let root    = this.getRoot()
     let current = root._state
+
+    if (next == null) {
+      next = EMPTY
+    }
 
     if (current !== next) {
       root._state = next
@@ -40,7 +47,7 @@ Foliage.prototype = {
   },
 
   clear() {
-    this.commit()
+    this.commit(null)
   },
 
   get(key, fallback) {
