@@ -5,10 +5,10 @@
  * @param {Object} state - The initial state of the instance
  */
 
+let Diode  = require('diode')
 let assoc  = require('./assoc')
 let dissoc = require('./dissoc')
 let getIn  = require('./get')
-let Diode  = require('diode')
 
 const EMPTY = {}
 

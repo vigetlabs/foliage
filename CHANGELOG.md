@@ -1,9 +1,14 @@
 # Changelog
 
-## 0.21.0 (Not released)
+## 0.21.0
 
 - `commit` will always default to the same empty object assignment
   when given `null`. `undefined` will default to current state
+
+```
+Uglified : 3.081kb
+Gzipped  : 1.205kb
+```
 
 ## 0.20.0
 
