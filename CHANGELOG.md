@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.22.0
+
+- Renamed `assoc` and `dissoc` to `set` and `remove`. For those requiring these internal methods, this will be removed in the next release.
+- Significantly improved the efficiency of `get`.
+
 ## 0.21.0
 
 - `commit` will always default to the same empty object assignment

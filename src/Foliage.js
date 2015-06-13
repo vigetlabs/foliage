@@ -5,19 +5,20 @@
  * @param {Object} state - The initial state of the instance
  */
 
-let Diode  = require('diode')
-let assoc  = require('./assoc')
-let dissoc = require('./dissoc')
-let getIn  = require('./get')
+let Diode    = require('diode')
+let setIn    = require('./set')
+let removeIn = require('./remove')
+let getIn    = require('./get')
 
 const EMPTY = {}
+const PATH  = []
 
 function Foliage (state) {
   Diode(this)
 
-  this._path    = []
-  this._root    = this
-  this._changes = this._state = EMPTY
+  this._path  = PATH
+  this._root  = this
+  this._state = EMPTY
 
   this.commit(state)
 }
@@ -60,7 +61,7 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    this.commit(assoc(this._state, this.getPath(key), value))
+    this.commit(setIn(this._state, this.getPath(key), value))
   },
 
   update(key, obj) {
@@ -75,7 +76,7 @@ Foliage.prototype = {
   },
 
   remove(key) {
-    this.commit(dissoc(this._state, this.getPath(key)))
+    this.commit(removeIn(this._state, this.getPath(key)))
   },
 
   refine(key) {

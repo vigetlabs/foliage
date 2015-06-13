@@ -13,10 +13,14 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'src/**/__tests__/*.js*' : [ 'webpack' ]
+      'src/**/__tests__/*.js*' : [ 'webpack', 'sourcemap' ]
     },
 
-    reporters: [ 'nyan', 'coverage' ],
+    reporters: [ 'mocha', 'coverage' ],
+
+    mochaReporter: {
+      output: 'minimal'
+    },
 
     coverageReporter: {
       type: 'html',

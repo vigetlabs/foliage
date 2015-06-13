@@ -8,18 +8,6 @@ describe('Foliage', function() {
     new Foliage().is(new Foliage()).should.equal(true)
   })
 
-  describe('Foliage::get', function() {
-    it ('returns a given value', function() {
-      let plant = new Foliage(shallow)
-      plant.get('first').should.equal(1)
-    })
-
-    it ('returns a fallback if a path is not represented', function() {
-      let plant = new Foliage()
-      plant.get('first', 'fiz').should.equal('fiz')
-    })
-  })
-
   describe('When commiting new state', function() {
     it ('commits the same empty state on null', function(done) {
       let plant = new Foliage()

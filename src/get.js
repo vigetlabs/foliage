@@ -7,12 +7,18 @@
  * @param {any} fallback - If the value is undefined, a fallback
  */
 
-function pluck(obj, key) {
-  return obj ? obj[key] : undefined
-}
+let keyPath = require('./keyPath')
 
-module.exports = function (obj, keys, fallback) {
-  let value = keys.reduce(pluck, obj)
+module.exports = function get(target, keys, fallback) {
+  keys = keyPath(keys)
 
-  return value === undefined ? fallback : value
+  for (var i = 0; i < keys.length; i++) {
+    if (target !== undefined) {
+      target = target[keys[i]]
+    } else {
+      return fallback
+    }
+  }
+
+  return target === undefined ? fallback : target
 }
