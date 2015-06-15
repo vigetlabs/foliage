@@ -16,9 +16,9 @@ const PATH  = []
 function Foliage (state) {
   Diode(this)
 
-  this._path  = PATH
-  this._root  = this
-  this._state = EMPTY
+  this._path = PATH
+  this._root = this
+  this.state = EMPTY
 
   this.commit(state)
 }
@@ -33,17 +33,17 @@ Foliage.prototype = {
     return this._root
   },
 
-  commit(next=this._state) {
+  commit(next=this.state) {
     let root    = this.getRoot()
-    let current = root._state
+    let current = root.state
 
     if (next == null) {
       next = EMPTY
     }
 
     if (current !== next) {
-      root._state = next
-      this.volley(root._state)
+      root.state = next
+      this.volley(root.state)
     }
   },
 
@@ -52,7 +52,7 @@ Foliage.prototype = {
   },
 
   get(key, fallback) {
-    return getIn(this._state, this.getPath(key), fallback)
+    return getIn(this.state, this.getPath(key), fallback)
   },
 
   set(key, value) {
@@ -61,7 +61,7 @@ Foliage.prototype = {
       key   = undefined
     }
 
-    this.commit(setIn(this._state, this.getPath(key), value))
+    this.commit(setIn(this.state, this.getPath(key), value))
   },
 
   update(key, obj) {
@@ -76,7 +76,7 @@ Foliage.prototype = {
   },
 
   remove(key) {
-    this.commit(removeIn(this._state, this.getPath(key)))
+    this.commit(removeIn(this.state, this.getPath(key)))
   },
 
   refine(key) {
@@ -99,7 +99,7 @@ Foliage.prototype = {
   },
 
   valueOf() {
-    return getIn(this._state, this.getPath())
+    return getIn(this.state, this.getPath())
   },
 
   toJSON() {

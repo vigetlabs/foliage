@@ -4,6 +4,7 @@
 
 - Renamed `assoc` and `dissoc` to `set` and `remove`. For those requiring these internal methods, this will be removed in the next release.
 - Significantly improved the efficiency of `get`.
+- Deprivatized the `state` object
 
 ## 0.21.0
 
