@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.23.0
+
+- Use class syntax for better compatibility
+
 ## 0.22.0
 
 - Renamed `assoc` and `dissoc` to `set` and `remove`. For those requiring these internal methods, this will be removed in the next release.
