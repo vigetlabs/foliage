@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.23.0
+## 0.24.0
 
 - Use class syntax for better compatibility
 
