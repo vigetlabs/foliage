@@ -8,6 +8,18 @@ describe('Foliage', function() {
     new Foliage().is(new Foliage()).should.equal(true)
   })
 
+  it ('can be inherited from', function(done) {
+    class MyThing extends Foliage {
+      constructor() {
+        super()
+        this.should.have.property('state')
+        done()
+      }
+    }
+
+    new MyThing('yes')
+  })
+
   describe('When commiting new state', function() {
     it ('commits the same empty state on null', function(done) {
       let plant = new Foliage()

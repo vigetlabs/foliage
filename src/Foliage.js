@@ -13,7 +13,12 @@ let getIn    = require('./get')
 const EMPTY = {}
 const PATH  = []
 
-class Foliage {
+function Foliage () {
+  return Foliage.prototype.constructor.apply(this, arguments)
+}
+
+Foliage.prototype = {
+
   constructor(state) {
     Diode(this)
 
@@ -22,15 +27,15 @@ class Foliage {
     this.state = EMPTY
 
     this.commit(state)
-  }
+  },
 
   getPath(key) {
     return this._path.concat(key).filter(i => i !== undefined)
-  }
+  },
 
   getRoot() {
     return this._root
-  }
+  },
 
   commit(next=this.state) {
     let root    = this.getRoot()
@@ -44,15 +49,15 @@ class Foliage {
       root.state = next
       this.volley(root.state)
     }
-  }
+  },
 
   clear() {
     this.commit(null)
-  }
+  },
 
   get(key, fallback) {
     return getIn(this.state, this.getPath(key), fallback)
-  }
+  },
 
   set(key, value) {
     if (arguments.length === 1) {
@@ -61,7 +66,7 @@ class Foliage {
     }
 
     this.commit(setIn(this.state, this.getPath(key), value))
-  }
+  },
 
   update(key, obj) {
     if (arguments.length === 1) {
@@ -72,21 +77,21 @@ class Foliage {
     for (let prop in obj) {
       this.set([ key, prop ], obj[prop])
     }
-  }
+  },
 
   remove(key) {
     this.commit(removeIn(this.state, this.getPath(key)))
-  }
+  },
 
   refine(key) {
     return Object.create(this, {
       _path : { value: this.getPath(key) }
     })
-  }
+  },
 
   keys() {
     return Object.keys(this.valueOf() || {})
-  }
+  },
 
   values() {
     // An anonymous function is used here instead of
@@ -95,35 +100,35 @@ class Foliage {
     return this.keys().map(function(key) {
       return this.get(key)
     }, this)
-  }
+  },
 
   valueOf() {
     return getIn(this.state, this.getPath())
-  }
+  },
 
   toJSON() {
     return this.valueOf()
-  }
+  },
 
   is(branch) {
     return branch.valueOf() == this.valueOf()
-  }
+  },
 
   find(fn, scope) {
     return this.filter(fn, scope)[0]
-  }
+  },
 
   includes(value) {
     return this.indexOf(value) > -1
-  }
+  },
 
   first() {
     return this.values().shift()
-  }
+  },
 
   last() {
     return this.values().pop()
-  }
+  },
 
   size() {
     return this.values().length
