@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.24.1
+
+- Determined root cause of class syntax compatibility issue and made corrective change
+
 ## 0.24.0
 
 - Use class syntax for better compatibility
