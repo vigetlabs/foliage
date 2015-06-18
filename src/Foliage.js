@@ -13,21 +13,18 @@ let getIn    = require('./get')
 const EMPTY = {}
 const PATH  = []
 
-function Foliage () {
-  return Foliage.prototype.constructor.apply(this, arguments)
+function Foliage(state) {
+  Diode(this)
+
+  this._path = PATH
+  this._root = this
+  this.state = EMPTY
+
+  this.commit(state)
 }
 
 Foliage.prototype = {
-
-  constructor(state) {
-    Diode(this)
-
-    this._path = PATH
-    this._root = this
-    this.state = EMPTY
-
-    this.commit(state)
-  },
+  constructor: Foliage,
 
   getPath(key) {
     return this._path.concat(key).filter(i => i !== undefined)
