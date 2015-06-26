@@ -44,7 +44,7 @@ Foliage.prototype = {
 
     if (current !== next) {
       root.state = next
-      this.volley(root.state)
+      this.emit(root.state)
     }
   },
 

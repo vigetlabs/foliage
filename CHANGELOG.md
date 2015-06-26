@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.25
+
+## Breaking changes
+
+- Foliage will use Diode's `emit` instead of `volley` to propagate change. This is to prevent unexpected race conditions in projects Foliage supports. For those who wish to continue to use this functionality, consider debouncing the callback instead.
+
 ## 0.24.1
 
 - Determined root cause of class syntax compatibility issue and made corrective change
