@@ -8,6 +8,14 @@ purity for the sake of embeddability.
 
 [![Circle CI](https://circleci.com/gh/vigetlabs/foliage.svg?style=svg)](https://circleci.com/gh/vigetlabs/foliage)
 
+## Heads up!
+
+**As of September 9th, 2019, this project is no longer active**.
+
+This was a super fun project to hack on during the early days of cursor-based state management in React (see [Omniscient](https://omniscientjs.github.io/)). However we are no longer maintaining this project.
+
+Feel free to poke around, but this project is probably best not to depend on.
+
 ---
 
 ## Goals
